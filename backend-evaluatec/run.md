@@ -1,1 +1,0 @@
-php -S localhost:8000 -t /home/rs17/Documentos/Proyectos/Personales/Evaluatec/backend-evaluatec 

@@ -1,0 +1,96 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #001529;
+  color: white;
+  padding: 0 16px;
+}
+
+/* Logo con ancho fijo */
+.header-logo {
+  font-weight: bold;
+  font-size: 18px;
+  flex-shrink: 0;
+  width: 150px; /* o el ancho que prefieras */
+}
+
+/* Navbar con flex-grow para ocupar el espacio restante */
+.navbar-container {
+  background-color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-grow: 1;    /* Crece para ocupar espacio disponible */
+  min-width: 0;    /* Importante para que no desborde en flex */
+  margin: 0 16px;  /* Espacio entre logo y botón */
+  max-width: 600px;
+  transition: width 0.3s ease;
+}
+
+/* Botón hamburguesa con ancho fijo */
+.toggle {
+  flex-shrink: 0;
+  width: 40px;
+  cursor: pointer;
+}
+
+/* Ajustes para móvil */
+@media (max-width: 767px) {
+  .header-logo {
+    display: none;
+    width: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar-container {
+    flex-grow: 1;
+    margin: 0 8px;
+    max-width: none;
+  }
+
+  .toggle {
+    width: 40px; /* Mantén el ancho fijo para el botón */
+  }
+}
+
+
+@keyframes popScale {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  20% {
+    transform: scale(0.2);
+    opacity: 0.5;
+  }
+  80% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.icon-animated {
+  display: inline-block;
+  animation: popScale 0.1s ease forwards;
+}
+
+
+/* Efecto al montarse el icono (al aparecer) */
+.icon-animated {
+  display: inline-block;
+  animation: popScale 0.1s ease forwards;
+}
+
+/* Opcional: efecto al hacer hover */
+.sidebar-toggle-btn:active .icon-animated {
+  animation: none; /* Para no interferir */
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
