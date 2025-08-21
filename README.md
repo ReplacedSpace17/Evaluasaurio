@@ -2,10 +2,7 @@
 # Evaluasaurio - Plataforma de Evaluación de Profesores
 **Evaluasaurio** es una aplicación web desarrollada en **React** con un **backend en Slim PHP**, diseñada para que las y los estudiantes evalúen a sus profesores de manera **anónima**, ofreciendo retroalimentación sobre el desempeño docente por materia.
 
-
 <img src="./logo.png" alt="Logo de Evaluasaurio" width="100%"/>
-
-
 
 ## Contexto y motivación
 
@@ -16,7 +13,6 @@ Además, cuando el estudiantado de **nuevo ingreso** registra sus materias, care
 - Garantiza **anonimato** en la evaluación para reducir sesgos y riesgos de represalias.  
 - Provee un **historial de calificaciones y opiniones** por materia y por docente.  
 - Permite que estudiantes **nuevos** obtengan una **idea clara** del estilo de enseñanza y la calidad percibida antes de **inscribirse** o **cambiar de grupo**.
-
 
 ## Sobre Singularity
 
@@ -37,8 +33,6 @@ Actualmente, Singularity tiene su base en **León, Guanajuato**, con miras a exp
 
 Evaluasaurio permite calificar y opinar sobre docentes por materia de forma anónima, generando estadísticas y perfiles docentes que apoyan la mejora continua y decisiones de inscripción más informadas.
 
----
-
 ## Características principales
 
 - Evaluación **anónima** de profesores por materia.  
@@ -47,7 +41,6 @@ Evaluasaurio permite calificar y opinar sobre docentes por materia de forma anó
 - Gestión de **solicitudes** de alta de profesores y materias.  
 - API REST JSON para integración con frontends y servicios.
 
----
 
 ## Tecnologías
 
@@ -56,37 +49,24 @@ Evaluasaurio permite calificar y opinar sobre docentes por materia de forma anó
 - **Base de datos:** MySQL/MariaDB.  
 - **Infraestructura:** Variables de entorno con Dotenv, CORS habilitado.
 
----
-
 ## Instalación rápida
 
 ### Backend
 
-
 1. Clonar el repositorio del backend:
-
-  
 
 ```bash
 git  clone  https://github.com/ReplacedSpace17/Evaluasaurio_backend.git
 ```
 
-  
-
 2. Instalar dependencias con Composer:
-
-  
 
 ```bash
 cd  Evaluasaurio_backend
 composer  install
 ```
 
-  
-
 3. Crear un archivo `.env` en la raiz del proyecto con la configuración de tu base de datos:
-
-  
 
 ```
 DB_HOST=localhost
@@ -96,63 +76,35 @@ DB_PASS=contraseña
 DB_CHARSET=utf8mb4
 ```
 
-  
-
 4. Inicializar la base de datos con los archivos SQL incluidos (`database_init.sql`).
 
- 
-
 5. Ejecutar el servidor PHP (para desarrollo):
-
-  
 
 ```bash
 php  -S  0.0.0.0:8080  -t  public
 ```
 
-  
-
 ### Frontend
-
-  
 
 1. Clonar el repositorio del frontend.
 
-  
-
 2. Instalar dependencias:
-
-  
 
 ```bash
 npm  install
 ```
 
-  
-
 3. Configurar la URL del backend en tus llamadas a la API (por ejemplo, `https://localhost:8080`).
 
-  
-
 4. Construir para producción:
-
-  
 
 ```bash
 npm  run  build
 ```
 
-  
-
 5. Subir la carpeta `dist/` al hosting de tu elección (por ejemplo, Hostinger).
 
-  
-
-  
-
 ## Uso
-
-  
 
 - Los estudiantes pueden navegar por la aplicación, seleccionar a su profesor y dejar una calificación y opinión anónima.
 
@@ -160,22 +112,15 @@ npm  run  build
 
 - La aplicación muestra estadísticas agregadas y rankings de docentes mejor evaluados.
 
-  
+## Capturas de pantalla
 
----
-
-  
+<img src="./screenshots/home.png" alt="Logo de Evaluasaurio" width="70%"/>
+<img src="./screenshots/profile.png" alt="Logo de Evaluasaurio" width="70%"/>
+<img src="./screenshots/calificar.png" alt="Logo de Evaluasaurio" width="70%"/>
 
 ## Licencia
 
-  
-
 Este proyecto fue desarrollado por [@Replacedspace17](https://github.com/ReplacedSpace17)  y [@cessdel](https://github.com/cessdel) parte de [@Singularity-MX](https://github.com/Singularity-MX/) y se distribuye bajo la **Licencia GPL**, permitiendo la libre distribución y modificación del software respetando los términos de la licencia.
-
-  
-
-
-  
 
 ## Contacto
 Para dudas, sugerencias o contribuciones, contacta a [@Replacedspace17](https://github.com/ReplacedSpace17)  o [@cessdel](https://github.com/cessdel) parte del colectivo [@Singularity-MX](https://github.com/Singularity-MX/) en GitHub.
