@@ -1,10 +1,11 @@
 
 # Evaluasaurio - Plataforma de Evaluación de Profesores
+**Evaluasaurio** es una aplicación web desarrollada en **React** con un **backend en Slim PHP**, diseñada para que las y los estudiantes evalúen a sus profesores de manera **anónima**, ofreciendo retroalimentación sobre el desempeño docente por materia.
+
 
 <img src="./logo.png" alt="Logo de Evaluasaurio" width="100%"/>
 
-<br>
-**Evaluasaurio** es una aplicación web desarrollada en **React** con un **backend en Slim PHP**, diseñada para que las y los estudiantes evalúen a sus profesores de manera **anónima**, ofreciendo retroalimentación sobre el desempeño docente por materia.
+
 
 ## Contexto y motivación
 
