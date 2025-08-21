@@ -164,9 +164,9 @@ const PublicationByID_docente = ({ocultarFoto, publications}) => {
                    {!ocultarFoto && !screens.xs && (
   <Col xs={0} sm={4} md={3}>
     <Avatar
-      size={48}
-      src={`https://i.pravatar.cc/150?u=${post.calificacion_id}`}
-    />
+                              size={40}
+                            
+                            >?</Avatar>
   </Col>
 )}
 

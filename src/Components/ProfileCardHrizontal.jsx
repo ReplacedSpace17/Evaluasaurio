@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Avatar, Typography, Tag, Rate } from "antd";
-import { PlusOutlined, ArrowLeftOutlined } from "@ant-design/icons";
+import { PlusOutlined, ArrowLeftOutlined , HomeOutlined} from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import imageBoy from "../assets/images/boy.png";
 import imageGirl from "../assets/images/girl.png";
@@ -112,10 +112,11 @@ const patternBg = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/sv
             alignItems: "center",
             justifyContent: "end",
           }}
-        >
-          <Button type="primary" icon={<PlusOutlined />} style={{ width: "100%" }} onClick={() => navigate(`/submit/${profile.id}`)}>
+        > 
+          <Button type="primary" icon={<PlusOutlined />} style={{ width: "100%", }} onClick={() => navigate(`/submit/${profile.id}`)}>
             Agregar opinión
           </Button>
+         
         </div>
       </div>
     </div>

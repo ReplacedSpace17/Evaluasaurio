@@ -15,6 +15,9 @@ import {
 } from "antd";
 import backend from "../config/backend";
 import { useNavigate } from "react-router-dom";
+import { StarFilled } from "@ant-design/icons";
+
+
 const { Option } = Select;
 const { RangePicker } = DatePicker;
 const { useBreakpoint } = Grid;
@@ -35,6 +38,23 @@ const Publications = () => {
   const navigate = useNavigate();
   const screens = useBreakpoint();
   const url = backend + "/publications/teachers";
+
+  const renderStars = (score) => {
+  const stars = [];
+  for (let i = 1; i <= 5; i++) {
+    stars.push(
+      <StarFilled
+        key={i}
+        style={{
+          color: i <= score ? "#ffc107" : "#e4e5e9",
+          marginRight: 2,
+          fontSize: 16,
+        }}
+      />
+    );
+  }
+  return stars;
+};
 
   const fetchData = () => {
     setLoading(true);
@@ -254,9 +274,9 @@ const Publications = () => {
                     {!screens.xs && (
                       <Col xs={0} sm={4} md={3}>
                         <Avatar
-                          size={48}
-                          src={`https://i.pravatar.cc/150?u=${post.nombre_docente}`}
-                        />
+                          size={40}
+                        
+                        >?</Avatar>
                       </Col>
                     )}
                     <Col xs={24} sm={20} md={21}>
@@ -276,7 +296,14 @@ const Publications = () => {
                         <Tag color="green">{post.materia}</Tag>
                       </div>
                       <p style={{ margin: 0 }}>
-                        <strong>Puntaje:</strong> {post.puntaje}
+                        <div style={{ display: "flex", alignItems: "center", margin: "4px 0" }}>
+  {renderStars(post.puntaje)}
+ <span style={{ marginLeft: 6, fontSize: "0.85em", color: "#555" }}>
+  {Number(post.puntaje).toFixed(1)}
+</span>
+
+</div>
+
                       </p>
                       <p style={{ margin: "4px 0" }}>{post.opinion}</p>
                       <p style={{ fontSize: "0.75em", color: "#888", margin: 0 }}>

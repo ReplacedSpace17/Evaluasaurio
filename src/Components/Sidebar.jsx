@@ -5,16 +5,21 @@ import backend from "../config/backend";
 import './sidebar.css';
 import { useNavigate } from "react-router-dom";
 
+import imageBoy from "../assets/images/boy.svg";
+import imageGirl from "../assets/images/girl.svg";
+
 const { Title, Text } = Typography;
 
 const Sidebar = () => {
+  
   const [topProfessors, setTopProfessors] = useState([]);
   const navigate = useNavigate();
 
   const handleProfessorClick = (professorId) => {
     navigate(`/teacher/${professorId}`);
   };
-
+  
+  
   useEffect(() => {
     fetch(backend + "/teachers/top")
       .then((res) => res.json())
@@ -68,7 +73,8 @@ const Sidebar = () => {
       <Avatar
         size={48}
         icon={<UserOutlined />}
-        src={`https://i.pravatar.cc/48?u=${item.id}`}
+        src={item.sexo === "Masculino" ? imageBoy : imageGirl}
+
       />
     }
     title={

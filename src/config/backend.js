@@ -1,3 +1,3 @@
-const backend = "http://localhost:8080";
+const backend = "https://backend.neurosense.mx";
 
 export default backend;

@@ -1,29 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { Select, Avatar } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { Select } from "antd";
 import backend from "../config/backend";
 import { useNavigate } from "react-router-dom";
 
 const { Option } = Select;
 
-const removeAccents = (text) => {
-  return text
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
-};
+const removeAccents = (text) =>
+  text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
-const Navbar = () => {
+const Navbar = ({ windowWidth }) => {
   const [professors, setProfessors] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     fetch(backend + "/teachers")
-      .then(res => res.json())
-      .then(data => {
-        if(data.status === "success"){
-          setProfessors(data.data);
-        }
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "success") setProfessors(data.data);
       })
       .catch(console.error);
   }, []);
@@ -34,17 +28,15 @@ const Navbar = () => {
   });
 
   const onSearch = (value) => setSearchTerm(value);
+  const onSelect = (id) => navigate(`/teacher/${id}`);
 
-  const onSelect = (id) => {
-    navigate(`/teacher/${id}`);
-  };
-
+  // En móvil (<768px) ocupamos todo el ancho y ocultamos el logo
   return (
-   
+    <div style={{ width: "100%", minWidth: 0 }}>
       <Select
         showSearch
-        placeholder="Buscar"
-        style={{ width: "500px" }}
+        placeholder="Buscar profesor"
+        style={{ width: "100%" }} // ancho dinámico
         onSearch={onSearch}
         onSelect={onSelect}
         filterOption={false}
@@ -55,7 +47,7 @@ const Navbar = () => {
           </Option>
         ))}
       </Select>
-    
+    </div>
   );
 };
 

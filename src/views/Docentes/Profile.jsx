@@ -12,6 +12,8 @@ import Navbar from "../../Components/Navbar";
 import Grafica1 from "../../Components/graphics/Grafica1";
 import Grafica2 from "../../Components/graphics/Grafica2";
 import Grafica3 from "../../Components/graphics/Grafica3";
+import texto from "../../assets/Logo.svg";
+import logo from "../../assets/logo2.svg";
 
 const Profile = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -125,23 +127,60 @@ useEffect(() => {
   const ocultarGraficas = windowWidth < 1000;
 
   return (
-    <Layout style={{ height: "100vh", overflow: "hidden", width: "100vw", margin: -10 }}>
+    <Layout style={{ height: "100vh", overflow: "hidden", width: "100vw", margin: 0 }}>
       {/* HEADER */}
-      <Header
-        style={{
-          background: "#001529",
-          color: "white",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          alignContent: "center",
-          fontWeight: "bold",
-          fontSize: 18,
-          flexShrink: 0
-        }}
-      >
-        <Navbar />
-      </Header>
+<Header
+  style={{
+    display: "flex",
+    alignItems: "center",
+    background: "#193961",
+    color: "white",
+    padding: "0 16px",
+    position: "relative",
+  }}
+>
+  {/* Logo a la izquierda (desktop solo) */}
+  {windowWidth >= 768 && (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: 8,
+        cursor: "pointer",
+        flexShrink: 0,
+        marginLeft: 16,
+      }}
+      onClick={() => navigate("/")}
+    >
+      <img src={logo} alt="Logo" style={{ height: 50 ,  marginRight: 8}} />
+      <img src={texto} alt="Texto Logo" style={{ height: 20, marginRight: 8 }} />
+    </div>
+  )}
+
+  {/* Spacer flexible entre logo y container */}
+  <div style={{ flex: 1 }}></div>
+
+  {/* Container del navbar */}
+  <div
+    style={{
+      maxWidth: 600,       // ancho máximo del navbar
+      width: "100%",       // ocupe todo el espacio disponible hasta maxWidth
+      display: "flex",
+      justifyContent: "center",
+      minWidth: 0,         // importante para flexShrink
+    }}
+  >
+    <Navbar windowWidth={windowWidth} />
+  </div>
+
+  {/* Spacer flexible al final */}
+  <div style={{ flex: 1 }}></div>
+</Header>
+
+
+
+
+
 
       {/* CONTENIDO */}
       <Content
@@ -168,6 +207,7 @@ useEffect(() => {
             justifyContent: "center",
             alignItems: "center",
             backgroundColor: "transparent",
+            marginTop: isMobile ? 0 : 12,
           }}
         >
         {loadingProfile ? (

@@ -6,7 +6,8 @@ import Navbar from "../../Components/Navbar";
 import Sidebar from "../../Components/Sidebar";
 import Publications from "../../Components/Publications";
 import { useNavigate } from "react-router-dom";
-
+import texto from "../../assets/Logo.svg";
+import logo from "../../assets/logo2.svg";
 const { Header, Sider, Content } = Layout;
 
 const Home = () => {
@@ -33,19 +34,38 @@ const Home = () => {
   };
 
   return (
-    <Layout style={{ height: "100vh", overflow: "hidden", margin: -10 }}>
+    <Layout style={{ height: "100vh", overflow: "hidden", margin: 0, width: "100vw" }}>
       <Header
         style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          background: "#001529",
+          background: "#193961",
           color: "white",
           padding: "0 16px",
-          flexShrink: 0
+          flexShrink: 0,
+          
         }}
       >
-        <div style={{ fontWeight: "bold", fontSize: 18 }}>Evaluadoc</div>
+       <div
+  style={{
+    fontWeight: "bold",
+    fontSize: 18,
+    display: "flex",
+    alignItems: "center",
+    gap: 8,
+    marginLeft: 16
+  }}
+  onClick={() => navigate('/')}
+>
+  <img src={logo} alt="Logo" style={{ height: 50, marginRight: 8 }} />
+  {/* Solo mostrar el texto/logo secundario si la pantalla es >= 768px */}
+  {windowWidth >= 768 && (
+    <img src={texto} alt="Texto Logo" style={{ height: 20, marginRight: 8 }} />
+  )}
+</div>
+
+        
 
         <div style={{ width: "30%", minWidth: 150, maxWidth: 600, display: "flex", justifyContent: "center", alignItems: "center" }}>
           <Navbar />

@@ -6,8 +6,8 @@ const ViewSubmit = () => {
 
     //obtener el id desde la url, :id
     const id = window.location.pathname.split("/").pop();
-    
-    const svgBackground = `data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cdefs%3E%3Cpattern%20id%3D%22a%22%20width%3D%2277.141%22%20height%3D%2241%22%20patternTransform%3D%22rotate(165)scale(2)%22%20patternUnits%3D%22userSpaceOnUse%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%238696a2%22/%3E%3Cpath%20fill%3D%22none%22%20stroke%3D%22%236f7c85%22%20stroke-width%3D%227%22%20d%3D%22M73.212%2040H50.118L38.57%2020%2050.118%200h23.094l11.547%2020zM61.665%2060H38.57L27.023%2040%2038.57%2020h23.095l11.547%2020zm0-40H38.57L27.023%200%2038.57-20h23.095L73.212%200zM38.57%2060H15.476L3.93%2040l11.547-20h23.095l11.547%2020zm0-40H15.476L3.93%200l11.547-20h23.095L50.118%200zM27.023%2040H3.93L-7.617%2020%203.93%200h23.094L38.57%2020z%22/%3E%3C/pattern%3E%3C/defs%3E%3Crect%20width%3D%22800%25%22%20height%3D%22800%25%22%20fill%3D%22url(%23a)%22%20transform%3D%22translate(-70%20-52)%22/%3E%3C/svg%3E`;
+
+    const svgBackground = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' width='40' height='59.428' patternTransform='rotate(155)scale(2)' patternUnits='userSpaceOnUse'><rect width='100%' height='100%' fill='%230466c8'/><path fill='none' stroke='%23023e7e' stroke-linecap='round' stroke-linejoin='round' stroke-width='5' d='M0 70.975V47.881m20-1.692L8.535 52.808v13.239L20 72.667l11.465-6.62V52.808zm0-32.95 11.465-6.62V-6.619L20-13.24 8.535-6.619V6.619zm8.535 4.927v13.238L40 38.024l11.465-6.62V18.166L40 11.546zM20 36.333 0 47.88m0 0v23.094m0 0 20 11.548 20-11.548V47.88m0 0L20 36.333m0 0 20 11.549M0 11.547l-11.465 6.619v13.239L0 38.025l11.465-6.62v-13.24zv-23.094l20-11.547 20 11.547v23.094M20 36.333V13.24'/></pattern></defs><rect width='800%' height='800%' fill='url(%23a)' transform='translate(-158 -228)'/></svg>`;
 
   return (
    <Layout style={{ 
