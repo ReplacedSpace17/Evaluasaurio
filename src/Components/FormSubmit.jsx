@@ -228,17 +228,16 @@ const keywords = [
 };
 
 
-  // ========================== Modal Teacher ==========================
+// ========================== Modal Teacher ==========================
 const handleModalTeacherSubmit = async (values) => {
   setModalSubmitting(true);
   try {
-    const payload = { ...values, department_id: values.departamento };
-    delete payload.departamento;
+    console.log("📤 Valores a enviar:", values); // aquí ya debe incluir 'department'
 
-    const res = await fetch(`${backend}/teacher_requests`, {
+    const res = await fetch(`${backend}/teacher_requests/add`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(values)  // values ya tiene 'department'
     });
 
     const data = await res.json();
@@ -275,6 +274,7 @@ const handleModalTeacherSubmit = async (values) => {
     setModalSubmitting(false);
   }
 };
+
 
   // ========================== Modal Subject ==========================
   const handleModalSubjectSubmit = async (values) => {
@@ -493,13 +493,15 @@ const handleModalTeacherSubmit = async (values) => {
       </Form.Item>
     )}
 
-    <Form.Item label="Departamento" name="departamento" rules={[{ required: true }]}>
-      <Select>
-        {departamentos.map((d) => (
-          <Option key={d.id} value={d.id}>{d.name}</Option>
-        ))}
-      </Select>
-    </Form.Item>
+  <Form.Item
+  label="Departamento"
+  name="department"  // <--- nombre exacto
+  rules={[{ required: true, message: 'Ingresa el departamento' }]}
+>
+  <Input placeholder="Ingresa el nombre del departamento" />
+</Form.Item>
+
+
 
     <Button type="primary" htmlType="submit" loading={modalSubmitting} block>
       Enviar solicitud

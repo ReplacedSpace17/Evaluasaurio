@@ -27,7 +27,7 @@ const Publications = () => {
   const [filtered, setFiltered] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const [filtersEnabled, setFiltersEnabled] = useState(true);
+  const [filtersEnabled, setFiltersEnabled] = useState(false);
   const [scoreFilterEnabled, setScoreFilterEnabled] = useState(false);
 
   const [filterTeacher, setFilterTeacher] = useState("");
@@ -153,6 +153,7 @@ const Publications = () => {
           position: "sticky",
           borderRadius: "10px",
           top: 0,
+          marginBottom: 8,
           zIndex: 100
         }}
       >
@@ -264,9 +265,11 @@ const Publications = () => {
             <Spin size="large" />
           </div>
         ) : (
+          <> <h3 style={{ margin: "8px 0", color: "#333" }}>Calificaciones recientes</h3>
           <List
             dataSource={filtered}
             itemLayout="horizontal"
+            
             renderItem={(post) => (
               <List.Item style={{ padding: "8px 0" }} onClick={() => handleProfessorClick(post.id)} >
                 <Card size="small" style={{ width: "100%" }}>
@@ -315,6 +318,7 @@ const Publications = () => {
               </List.Item>
             )}
           />
+          </>
         )}
       </div>
     </div>

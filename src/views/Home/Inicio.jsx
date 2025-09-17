@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import texto from "../../assets/Logo.svg";
 import logo from "../../assets/logo2.svg";
 const { Header, Sider, Content } = Layout;
+import backend from "../../config/backend";
 
 const Home = () => {
   const [sidebarVisible, setSidebarVisible] = useState(true);
