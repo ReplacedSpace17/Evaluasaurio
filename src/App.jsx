@@ -13,7 +13,7 @@ import SplashScreen from './views/Loader/Loader.jsx';
 import ViewExample from './Components/graphics/viewExample.jsx';
 
 import useAnalytics from './hooks/useAnalytics.js';
-
+import EstadisticasVisitas from './views/Visitas.jsx';
 const App = () => {
   const [loading, setLoading] = useState(true);
 
@@ -35,6 +35,7 @@ const App = () => {
         <Route path="/realtime" element={<ViewCouter />} />
         <Route path="/intro" element={<IntroSlides />} />
         <Route path="/loader" element={<SplashScreen />} />
+        <Route path="/admin" element={<EstadisticasVisitas />} />
       </Routes>
     </Router>
   );
