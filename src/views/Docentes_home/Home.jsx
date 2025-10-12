@@ -11,7 +11,7 @@ import logo from "../../assets/logo2.svg";
 const { Header, Sider, Content } = Layout;
 import backend from "../../config/backend";
 
-const Home = () => {
+const HomeDocentes = () => {
   const [sidebarVisible, setSidebarVisible] = useState(true);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const navigate = useNavigate();
@@ -128,4 +128,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomeDocentes;

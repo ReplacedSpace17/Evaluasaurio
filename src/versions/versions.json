@@ -1,0 +1,37 @@
+[
+  {
+    "nameversion": "v1.1.2",
+    "date": "10-Sep-2025",
+    "resume": "Lanzamiento inicial de la plataforma",
+    "changes": [
+      "Se agregaron formularios para solicitar altas de docentes y materias",
+      "Se agregaron los filtros para buscar docentes por materia y departamento",
+      "Se incorporó la función de predicción de desempeño docente"
+    ],
+    "description": "Esta versión es la primera versión desplegada de la plataforma, que incluye formularios para solicitar altas de docentes y materias, filtros para buscar docentes por materia y departamento, y una función de predicción de desempeño docente basada en evaluaciones anteriores."
+  },
+  {
+    "nameversion": "v1.1.3",
+    "date": "17-Sep-2025",
+    "resume": "Correcciones menores y adición de datos faltantes",
+    "changes": [
+      "Se corrigieron los formularios de solicitud de alta de materias",
+      "Se corrigieron los formularios de solicitud de alta de docentes",
+      "Se incorporaron docentes y materias faltantes"
+    ],
+    "description": "Esta versión es la primera versión estable de la aplicación, con correcciones menores en los formularios de solicitud de altas y la incorporación de docentes y materias que faltaban en la base de datos."
+  },
+  {
+    "nameversion": "v1.2.0",
+    "date": "20-Oct-2025",
+    "resume": "Nueva sección de evaluación de departamentos y mejoras varias",
+    "changes": [
+      "Se agregó una nueva sección para la evaluación de departamentos.",
+      "Incorporación de docentes y materias faltantes.",
+      "Se agregó un menú de inicio.",
+      "Se incorporó el sistema de eventos mensuales.",
+      "Se agregó el minijuego especial Halloween, disponible del 31 de octubre al 2 de noviembre."
+    ],
+    "description": "Esta versión introduce una nueva sección para la evaluación de departamentos, además de incorporar docentes y materias que faltaban. También se añadió un menú de inicio para mejorar la navegación, un sistema de eventos mensuales para mantener la plataforma dinámica, y un minijuego especial de Halloween disponible por tiempo limitado."
+  }
+]

@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "type": "Docente",
+        "name": "Dr. John Smith",
+        "score": 4.6
+    },
+    {
+        "id": 2,
+        "type": "Departamento",
+        "name": "Direccion",
+        "score": 4.8
+    },
+    {
+        "id": 3,
+        "type": "Docente",
+        "name": "Prof. Jane Doe",
+        "score": 4.9
+    },
+    {
+        "id": 4,
+        "type": "Departamento",
+        "name": "Matematicas",
+        "score": 4.7
+    }
+    
+]

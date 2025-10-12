@@ -1,0 +1,23 @@
+[
+    {
+        "id":1,
+        "name": "Novedad 1",
+        "img": "/assets/novedades/banner.png",
+        "url": "/novedades/1",
+        "visible": true
+    },
+    {
+        "id": 2,
+        "name": "Novedad 2",
+        "img": "/assets/novedades/banner.png",
+        "url": "/novedades/2",
+        "visible": true
+    },
+    {
+        "id": 3,
+        "name": "Novedad 3",
+        "img": "/assets/novedades/banner.png",
+        "url": "/novedades/3",
+        "visible": true
+    }
+]

@@ -1,0 +1,16 @@
+.custom-menu .ant-menu-item {
+  border-radius: 8px;              
+  transition: background 0.1s ease; 
+  margin: 0 4px;                   
+  padding: 0 12px;                 /* Aumenta el área del hover */
+}
+
+.custom-menu .ant-menu-item div {  /* Aplica hover al div que envuelve el texto */
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.custom-menu .ant-menu-item:hover {
+  background-color: rgba(243, 241, 241, 0.894);
+}
