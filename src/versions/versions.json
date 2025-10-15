@@ -30,8 +30,10 @@
       "Incorporación de docentes y materias faltantes.",
       "Se agregó un menú de inicio.",
       "Se incorporó el sistema de eventos mensuales.",
-      "Se agregó el minijuego especial Halloween, disponible del 31 de octubre al 2 de noviembre."
+      "Se agregó el minijuego especial Halloween, disponible del 30 de octubre al 02 de noviembre.",
+      "Se actuaizó el UI del apartado evaluación docente.",
+      "Se agregó un apartado de reportes para incidentes."
     ],
-    "description": "Esta versión introduce una nueva sección para la evaluación de departamentos, además de incorporar docentes y materias que faltaban. También se añadió un menú de inicio para mejorar la navegación, un sistema de eventos mensuales para mantener la plataforma dinámica, y un minijuego especial de Halloween disponible por tiempo limitado."
+    "description": "Esta versión introduce una nueva sección para la evaluación de departamentos, además de incorporar docentes y materias que faltaban. También se añadió un menú de inicio para mejorar la navegación, un sistema de eventos mensuales para mantener la plataforma dinámica, un apartado de reportes para incidentes, y un minijuego especial de Halloween disponible por tiempo limitado."
   }
 ]

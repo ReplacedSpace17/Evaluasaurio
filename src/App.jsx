@@ -17,9 +17,14 @@ import EstadisticasVisitas from './views/Visitas.jsx';
 import HomeDocs from './views/Docs/HomeDocs.jsx';
 import Menu from './views/Menu/Menu.jsx';
 import HomeDepartamentos from './views/Departamentos_home/Home_departamentos.jsx';
+import ViewSubmitDepartament from './views/Departamentos_home/ViewSubmitDepartament.jsx';
+import Profile_departamento from './views/Departamentos_home/Profile_departamento.jsx';
+import Reportes_form from "./views/Reportes/Home_reportes.jsx";
+import View_Form_Reports from "./views/Reportes/ViewFormReports.jsx";
 
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 import Halloween from './views/Eventos/Halloween/Halloween.jsx';
 
@@ -48,8 +53,14 @@ const App = () => {
         <Route path="/admin" element={<EstadisticasVisitas />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/evaluaciones/departamentos" element={<HomeDepartamentos />} />
+        <Route path="/submit/departament/:id" element={<ViewSubmitDepartament />} />
+        <Route path="/submit/departaments" element={<ViewSubmitDepartament />} />
+        <Route path="/departament/:id" element={<Profile_departamento />} />
         <Route path="/docs" element={<HomeDocs />} />
         <Route path="/events/halloween" element={<Halloween />} />
+        <Route path="/reports" element={<Reportes_form/>} />
+        <Route path="/reports/submit" element={<View_Form_Reports/>} />
+
       </Routes>
     </Router>
   );

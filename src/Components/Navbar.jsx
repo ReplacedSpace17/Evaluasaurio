@@ -32,7 +32,7 @@ const Navbar = ({ windowWidth }) => {
 
   // En móvil (<768px) ocupamos todo el ancho y ocultamos el logo
   return (
-    <div style={{ width: "100%", minWidth: 0 }}>
+    <div style={{ width: "100%", minWidth: 180 }}>
       <Select
         showSearch
         placeholder="Buscar profesor"

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import docentes from "../../../assets/icons/docentes.svg";
 import departamentos from "../../../assets/icons/departamentos.svg";
+import instalaciones from "../../../assets/icons/instalaciones.svg";
+import reportes from "../../../assets/icons/reportes.svg";
 import Card_menu from "./Card_menu";
 
-const Menu_component = ({ title, width }) => {
+const Menu_component = ({ title, width, }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
 
   // Detectar tamaño de pantalla
@@ -53,9 +55,17 @@ const Menu_component = ({ title, width }) => {
         <Card_menu
           width={150}
           height={150}
-          icon={departamentos}
+          icon={instalaciones}
           text="Departamentos"
           navigate="/evaluaciones/departamentos"
+          mobile={isMobile}
+        />
+        <Card_menu
+          width={150}
+          height={150}
+          icon={reportes}
+          text="Reportar incidencia"
+          navigate="/reports"
           mobile={isMobile}
         />
         {/* Puedes agregar más Card_menu */}

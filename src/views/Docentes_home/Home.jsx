@@ -10,6 +10,7 @@ import texto from "../../assets/Logo.svg";
 import logo from "../../assets/logo2.svg";
 const { Header, Sider, Content } = Layout;
 import backend from "../../config/backend";
+import { motion } from "framer-motion";
 
 const HomeDocentes = () => {
   const [sidebarVisible, setSidebarVisible] = useState(true);
@@ -59,7 +60,7 @@ const HomeDocentes = () => {
   }}
   onClick={() => navigate('/')}
 >
-  <img src={logo} alt="Logo" style={{ height: 50, marginRight: 8 }} />
+  <img src={logo} alt="Logo" style={{ height: 40, marginRight: 8 }} />
   {/* Solo mostrar el texto/logo secundario si la pantalla es >= 768px */}
   {windowWidth >= 768 && (
     <img src={texto} alt="Texto Logo" style={{ height: 20, marginRight: 8 }} />
@@ -101,6 +102,9 @@ const HomeDocentes = () => {
 
         <Content style={{ padding: 24, background: "#f5f5f5", height: "100%", overflow: "hidden", display: "flex", flexDirection: "column", alignItems: "center" }}>
           <Layout style={{ maxWidth:800, minWidth:350, width: '80%', height: "100%", overflowY: "auto" , backgroundColor: "transparent" }}>
+            <motion.h1 style={{ fontSize:  "1.1rem" , fontWeight: "300", lineHeight: 1.2, color: "#454545ff", marginBottom: "0.5rem", textAlign:"center" }}>
+            Evaluación docente
+          </motion.h1>
             <Publications />
           </Layout>
 

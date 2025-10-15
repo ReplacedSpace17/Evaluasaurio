@@ -77,21 +77,23 @@ const Menu = () => {
 
   const showBlackContainer = windowWidth >= 900;
   const redContainerWidth = showBlackContainer ? "80%" : "95%";
+// Definimos height del header según el ancho
+const headerHeight = windowWidth < 768 ? 50 : 70;
 
   return (
     <Layout style={{ height: "100vh", overflow: "hidden", margin: 0, width: "100vw" }}>
       {/* Header */}
-      <Header
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          background: "#F6F8FA",
-          padding: "0 16px",
-          height: 70,
-          borderBottom: "1px solid #D1D9E0",
-        }}
-      >
+     <Header
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    background: "#F6F8FA",
+    padding: "0 16px",
+    height: headerHeight, // <-- aquí
+    borderBottom: "1px solid #D1D9E0",
+  }}
+>
         <div
           style={{
             fontWeight: "bold",
@@ -104,7 +106,7 @@ const Menu = () => {
           }}
           onClick={() => navigate("/")}
         >
-          <img src={logo} alt="Logo" style={{ height: 50, marginRight: 8 }} />
+          <img src={logo} alt="Logo" style={{ height: headerHeight - 20, marginRight: 8 }} />
           {windowWidth >= 768 && (
             <img src={texto} alt="Texto Logo" style={{ height: 20 }} />
           )}
@@ -122,7 +124,7 @@ const Menu = () => {
         )}
       </Header>
 
-      <Layout style={{ height: "calc(100vh - 70px)" }}>
+      <Layout style={{ height: `calc(100vh - ${headerHeight}px)` }}>
         {/* Sidebar en modo escritorio */}
         {windowWidth >= 1443 && (
           <Sider
@@ -139,7 +141,7 @@ const Menu = () => {
             collapsed={!sidebarVisible}
             trigger={null}
           >
-            <Sidebar_home width_component="100%" title="Evaluaciones recientes" padding_content="20px" />
+            <Sidebar_home width_component="100%" title="Preguntas frecuentes" padding_content="20px" />
           </Sider>
         )}
 
@@ -166,7 +168,8 @@ const Menu = () => {
         {/* Contenido principal */}
         <Content
           style={{
-            padding: 24,
+            padding: 10,
+            paddingTop: 15,
             background: "#fff",
             height: "100%",
             display: "flex",
@@ -196,8 +199,9 @@ const Menu = () => {
             <h1 style={{
               color:"#25292E",
               marginTop: 0,
+              fontSize: 20,
             }}>Bienvenido a Evaluasaurio</h1>
-            <Novedades title="Novedades del mes" width="95%" data={novedadesData} />
+            <Novedades title="Novedades del mes" width="95%" data={novedadesData} isMobile={windowWidth < 768} />
             <Menu_component title="Evaluaciones" width="95%" />
             <Eventos title="Eventos" data ={eventosData} width="95%"/>
           </div>

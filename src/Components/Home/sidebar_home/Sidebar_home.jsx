@@ -1,9 +1,38 @@
-import React from "react";
-import { Layout, Divider } from "antd";
-import { StarFilled } from "@ant-design/icons";
-import data from "./data_example.json";
+import React, { useState } from "react";
+import { Layout, Divider, Modal } from "antd";
+import { QuestionCircleOutlined } from "@ant-design/icons";
 
 const Sidebar_home = ({ width_component, title, padding_content }) => {
+  const [openModal, setOpenModal] = useState(null);
+
+  const questions = [
+    {
+      title: "¿Qué busca Evaluasaurio?",
+      answer:
+        "Esta plataforma busca promover la participación de estudiantes en la evaluación de sus docentes, departamentos e instalaciones académicas, con el fin de que cualquier persona pueda decidir si inscribirse o no en una materia o carrera.",
+    },
+    {
+      title: "¿Quién desarrolló Evaluasaurio?",
+      answer:
+        "Fue desarrollada por el colectivo de ciencia abierta Singularity, el cuál forma parte del movimiento mundial del DIY Bio. ",
+    },
+    {
+      title: "¿Está activo el proyecto?",
+      answer:
+        "Sí, actualmente se encuentra activo y en constante mejora para ofrecer nuevas funcionalidades y experiencias.",
+    },
+    {
+      title: "¿Puedo colaborar?",
+      answer:
+        "Claro, en Singularity siempre estamos abiertos a recibir colaboraciones. Puedes contactarnos a través de nuestras redes sociales o al siguiente correo electrónico: replacedspace17@singularitymx.org",
+    },
+        {
+      title: "¿Puedo implementarlo en mi institución?",
+      answer:
+        "Por supuesto, Evaluasaurio está diseñado para ser una herramienta flexible y adaptable. Si estás interesado en implementarlo en tu institución, no dudes en contactarnos para discutir los detalles. También puedes revisar el repositorio del proyecto en: https://github.com/ReplacedSpace17/Evaluasaurio",
+    },
+  ];
+
   return (
     <Layout.Sider
       width={width_component}
@@ -16,7 +45,6 @@ const Sidebar_home = ({ width_component, title, padding_content }) => {
         justifyContent: "flex-start",
         padding: padding_content,
         userSelect: "none",
-        
         overflowY: "auto",
       }}
       breakpoint="lg"
@@ -37,8 +65,8 @@ const Sidebar_home = ({ width_component, title, padding_content }) => {
 
       <Divider style={{ margin: "10px 0" }} />
 
-      {/* Lista de elementos */}
-      {data.map((item, index) => (
+      {/* Lista de preguntas */}
+      {questions.map((q, index) => (
         <div
           key={index}
           style={{
@@ -53,34 +81,41 @@ const Sidebar_home = ({ width_component, title, padding_content }) => {
           }}
           onMouseEnter={(e) => (e.currentTarget.style.background = "#f5f5f5")}
           onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+          onClick={() => setOpenModal(index)}
         >
           <p
             style={{
               margin: 0,
-              fontWeight: 600,
+              fontWeight: 300,
               color: "#25292E",
               fontSize: 15,
-            }}
-          >
-            {item.name}
-          </p>
-
-          <div
-            style={{
               display: "flex",
               alignItems: "center",
-              gap: 5,
-              marginTop: 3,
+              gap: 8,
             }}
           >
-            <StarFilled style={{ color: "#F5C518", fontSize: 14 }} />
-            <span style={{ fontSize: 14, color: "#555" }}>
-              {item.score} Estrellas
-            </span>
-            <span style={{ fontSize: 14, color: "#888" }}>/ {item.type}</span>
-          </div>
+            <QuestionCircleOutlined style={{ color: "#1677ff" }} />
+            {q.title}
+          </p>
         </div>
       ))}
+
+      {/* Modal dinámico */}
+      {openModal !== null && (
+        <Modal
+          open={openModal !== null}
+          onCancel={() => setOpenModal(null)}
+          onOk={() => setOpenModal(null)}
+          centered
+          title={questions[openModal].title}
+          okText="Cerrar"
+          cancelButtonProps={{ style: { display: "none" } }}
+        >
+          <p style={{ fontSize: 15, color: "#444", fontWeight: 300 }}>
+            {questions[openModal].answer}
+          </p>
+        </Modal>
+      )}
     </Layout.Sider>
   );
 };

@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
-const Novedades = ({ title, width, data }) => {
+const Novedades = ({ title, width, data, isMobile }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -14,6 +14,8 @@ const Novedades = ({ title, width, data }) => {
     autoplaySpeed: 3000,
     arrows: true
   };
+
+  const imageHeight = isMobile ? 180 : 250; // altura adaptada según mobile
 
   return (
     <div
@@ -37,45 +39,48 @@ const Novedades = ({ title, width, data }) => {
         {title}
       </h2>
 
-      <Slider {...settings}>
-        {data
-          .filter(item => item.visible)
-          .map((item) =>
-            item.url && item.url.toLowerCase() !== "none" ? (
-              <a
-                key={item.id}
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src={item.img}
-                  alt={item.name}
-                  style={{
-                    width: "100%",
-                    height: "250px",
-                    objectFit: "cover",
-                    borderRadius: 18,
-                    border: "1px solid #D1D9E0",
-                  }}
-                />
-              </a>
-            ) : (
-              <img
-                key={item.id}
-                src={item.img}
-                alt={item.name}
-                style={{
-                  width: "100%",
-                  height: "250px",
-                  objectFit: "cover",
-                  borderRadius: 18,
-                  border: "1px solid #D1D9E0",
-                }}
-              />
-            )
-          )}
-      </Slider>
+     <Slider {...settings}>
+  {data.filter(item => item.visible).map(item => (
+    <div
+      key={item.id}
+      style={{
+        height: imageHeight, // fuerza altura uniforme
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      {item.url && item.url.toLowerCase() !== "none" ? (
+        <a href={item.url} target="_blank" rel="noopener noreferrer" style={{ width: "100%", height: "100%" }}>
+          <img
+            src={item.img}
+            alt={item.name}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              borderRadius: 18,
+              border: "1px solid #D1D9E0",
+            }}
+          />
+        </a>
+      ) : (
+        <img
+          src={item.img}
+          alt={item.name}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            borderRadius: 18,
+            border: "1px solid #D1D9E0",
+          }}
+        />
+      )}
+    </div>
+  ))}
+</Slider>
+
     </div>
   );
 };

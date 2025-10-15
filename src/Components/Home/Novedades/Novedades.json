@@ -1,23 +1,16 @@
 [
     {
         "id":1,
-        "name": "Novedad 1",
-        "img": "/assets/novedades/banner.png",
-        "url": "/novedades/1",
+        "name": "Update V1.2.0 - Octubre 2025",
+        "img": "/assets/novedades/updateOct.png",
+        "url": "none",
         "visible": true
     },
     {
         "id": 2,
-        "name": "Novedad 2",
-        "img": "/assets/novedades/banner.png",
-        "url": "/novedades/2",
-        "visible": true
-    },
-    {
-        "id": 3,
-        "name": "Novedad 3",
-        "img": "/assets/novedades/banner.png",
-        "url": "/novedades/3",
+        "name": "Maestros del Terror",
+        "img": "/assets/novedades/halloween2.png",
+        "url": "none",
         "visible": true
     }
 ]

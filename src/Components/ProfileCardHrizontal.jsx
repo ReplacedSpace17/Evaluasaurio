@@ -48,7 +48,7 @@ const patternBg = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/sv
         <Button
           type="text"
           icon={<ArrowLeftOutlined style={{ color: "#fff", fontSize: 20 }} />}
-          onClick={() => navigate('/')}
+          onClick={() => navigate('/evaluaciones/docentes')}
           style={{ position: "absolute", top: 10, left: 10, zIndex: 1 }}
         />
 

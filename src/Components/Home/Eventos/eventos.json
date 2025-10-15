@@ -1,11 +1,11 @@
 [
     {
-        "name": "Docentes del terror",
-        "date_lanzamiento": "31/Oct/2025",
+        "name": "Maestros del terror",
+        "date_lanzamiento": "30/Oct/2025",
         "date_finalizacion": "02/Nov/2025",
-        "descripcion": "Prepárate para vivir una experiencia única este Halloween académico con “Docentes del Terror”, un evento en el que los estudiantes se convierten en jueces y los maestros en las más temidas leyendas del aula.",
+        "descripcion": "Prepárate para vivir una experiencia única este Halloween académico con “Maestros del Terror”, un evento en el que los estudiantes se convierten en jueces y los maestros en las más temidas leyendas del aula.",
         "navigate":"/events/halloween",
-        "img": "/assets/events/example.png",
+        "img": "/assets/events/maestros.png",
         "visible": true
     }
 ]

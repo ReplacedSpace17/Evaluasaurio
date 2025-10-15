@@ -25,10 +25,11 @@ const Card_event = ({ title, image, description, navigate, finalDate, launchDate
   const [hover, setHover] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
   const [isActive, setIsActive] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
   const history = useNavigate();
 
-  const fullUrl = `${window.location.origin}${navigate}`; // ejemplo: https://tuweb.com/events/halloween
+  const fullUrl = `${window.location.origin}${navigate}`; 
 
   const handleClick = () => {
     if (isActive) history(navigate);
@@ -44,6 +45,7 @@ const Card_event = ({ title, image, description, navigate, finalDate, launchDate
     const now = new Date();
     const start = parseDate(launchDate);
     const end = parseDate(finalDate);
+    setHasStarted(now >= start);
     setIsActive(now >= start && now <= end);
   }, [launchDate, finalDate]);
 
@@ -76,6 +78,7 @@ const Card_event = ({ title, image, description, navigate, finalDate, launchDate
           overflow: "hidden",
           boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
           marginBottom: "12px",
+          border: "1px solid #D1D9E0",
         }}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
@@ -114,7 +117,7 @@ const Card_event = ({ title, image, description, navigate, finalDate, launchDate
               color: "#25292E",
             }}
           >
-            {title} — Disponible hasta {finalDate}
+            {title} — {hasStarted ? `Disponible hasta ${finalDate}` : `Inicia el ${launchDate}`}
           </h3>
           <p
             style={{
@@ -142,14 +145,13 @@ const Card_event = ({ title, image, description, navigate, finalDate, launchDate
               onClick={handleClick}
               disabled={!isActive}
               style={{
-                marginLeft: 10,
                 maxWidth: "120px",
                 flex: 1,
                 opacity: isActive ? 1 : 0.5,
                 cursor: isActive ? "pointer" : "not-allowed",
               }}
             >
-              {isActive ? "Jugar" : "Próximamente"}
+              {isActive ? "Jugar" : hasStarted ? "No disponible" : "Próximamente"}
             </Button>
 
             <Button

@@ -5,6 +5,7 @@ import javascriptObfuscator from 'rollup-plugin-javascript-obfuscator';
 export default defineConfig({
   plugins: [
     react(),
+    
     javascriptObfuscator({
       // Opciones de ofuscación
       compact: true,

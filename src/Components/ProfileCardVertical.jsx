@@ -59,7 +59,7 @@ const CardVerticalProfile = ({ profile }) => {
         <Button
           type="text"
           icon={<ArrowLeftOutlined style={{ color: "#fff", fontSize: 20 }} />}
-          onClick={() => navigate('/')}
+          onClick={() => navigate('/evaluaciones/docentes')}
           style={{ position: "absolute", top: 10, left: 10 }}
         />
 
