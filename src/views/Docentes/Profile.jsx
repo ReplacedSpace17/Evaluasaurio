@@ -26,7 +26,6 @@ const Profile = () => {
 const [loadingGrafica1, setLoadingGrafica1] = useState(true);
 const [loadingGrafica2, setLoadingGrafica2] = useState(true);
 const [loadingGrafica3, setLoadingGrafica3] = useState(true);
-const [loadingPublicaciones, setLoadingPublicaciones] = useState(true);
 
   //datos para el card
   const [profile, setProfile] = useState({
@@ -45,7 +44,7 @@ const [loadingPublicaciones, setLoadingPublicaciones] = useState(true);
 const [promedioCalificaciones, setPromedioCalificaciones] = useState([]);
 const [promedioMaterias, setPromedioMaterias] = useState([]);
 const [evolucionMaterias, setEvolucionMaterias] = useState([]);
-const [publicacionesDocente, setPublicacionesDocente] = useState([]);
+const basePath = `${backend}/teachers/${docenteId}/califications/more`
   //------------------------------------------- carga de información del docente
   useEffect(() => {
   setLoadingProfile(true);
@@ -76,15 +75,6 @@ useEffect(() => {
     .then(data => setPromedioCalificaciones(data))
     .catch(console.error)
     .finally(() => setLoadingGrafica1(false));
-}, [docenteId]);
-
-useEffect(() => {
-  setLoadingPublicaciones(true);
-  fetch(`${backend}/teachers/${docenteId}/califications/more`)
-    .then(res => res.json())
-    .then(data => setPublicacionesDocente(data))
-    .catch(console.error)
-    .finally(() => setLoadingPublicaciones(false));
 }, [docenteId]);
 
 
@@ -235,7 +225,10 @@ useEffect(() => {
         >
           {/* PUBLICACIONES */}
           <Layout style={{ backgroundColor: "#fff", maxWidth: 700, minWidth: 300, width: '100%', height: "100%", overflowY: "auto", padding: 15, borderRadius: 10, marginTop: 0, border: "1px solid #d9d9d9", boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}>
-            <PublicationByID_docente ocultarFoto={ocultarfotoMedida} publications={publicacionesDocente} />
+            <PublicationByID_docente 
+              ocultarFoto={ocultarfotoMedida} 
+              basePath={basePath}
+              />
 
           </Layout>
 

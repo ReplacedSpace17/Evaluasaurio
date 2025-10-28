@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { Form, Input, Select, Button, Slider, Typography, message, Divider, Modal, Checkbox } from "antd";
+import React, { useEffect, useState } from "react";
+import { Form, Input, Select, Button, Slider, Typography, message, Divider, Modal, Checkbox, AutoComplete } from "antd";
 import { FaStar } from "react-icons/fa";
 import { ArrowLeftOutlined, CheckOutlined, QuestionCircleOutlined } from "@ant-design/icons"; 
 import backend from "../config/backend";
 import { useNavigate } from "react-router-dom";
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
 import Swal from "sweetalert2";
+import SubjectSelect from "./Selects/SubjectSelect";
+import TeacherSelect from "./Selects/TeacherSelect";
 
 const { TextArea } = Input;
 const { Option } = Select;
@@ -20,8 +22,6 @@ const FormSubmit = ({ id }) => {
   };
   const [notify, setNotify] = useState(false);
 
-  const [teachers, setTeachers] = useState([]);
-  const [subjects, setSubjects] = useState([]);
   const [score, setScore] = useState(1); 
   const [form] = Form.useForm();
   const [submitting, setSubmitting] = useState(false);
@@ -31,9 +31,39 @@ const FormSubmit = ({ id }) => {
   const [modalTeacherVisible, setModalTeacherVisible] = useState(false);
   const [modalSubjectVisible, setModalSubjectVisible] = useState(false);
   const [modalSubmitting, setModalSubmitting] = useState(false);
+  const [dataTeacher, setDataTeacher] = useState()
+  const [isLoadingTeacher, setIsLoadingTeacher] = useState(true)
   const navigate = useNavigate();
-  const [departamentos, setDepartamentos] = useState([]);
 
+  const fetchTeacher = async () => {
+    try {
+      setIsLoadingTeacher(true);
+      
+      const response = await fetch(`${backend}/teachers/${id}`);
+
+      if (!response.ok) {
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+
+      const teacherJson = await response.json();
+      setDataTeacher(teacherJson);
+      //cargamos la referencia de id al form y lo bloqueamos para evitar que seleccione otro
+      form.setFieldsValue({teacher_id: teacherJson.id})
+    } catch (error) {
+      console.error("Error al obtener el profesor:", error);
+    } finally {
+      setIsLoadingTeacher(false);
+    }
+  }
+
+  useEffect(() => {
+    if(!isNaN(id)){
+      fetchTeacher()
+    }else{
+      setIsLoadingTeacher(false)
+    }
+  }, [])
+ 
 const keywords = [
   // Recomendación general
   "recomendable",
@@ -84,32 +114,6 @@ const keywords = [
   "motivador para mejorar",
   "desmotivador"
 ];
-
-
-
-  useEffect(() => {
-    fetch(`${backend}/teachers`)
-      .then(res => res.json())
-      .then(result => {
-        if (result.status === "success") {
-          setTeachers(result.data);
-          if (!isNaN(id) && id != 0) {
-            form.setFieldsValue({ teacher_id: parseInt(id) });
-          }
-        }
-      })
-      .catch(console.error);
-
-    fetch(`${backend}/subjects`)
-      .then(res => res.json())
-      .then(data => setSubjects(data))
-      .catch(console.error);
-
-      fetch(`${backend}/departments`)
-      .then(res => res.json())
-      .then(data => setDepartamentos(data))
-      .catch(console.error);
-  }, [id, form]);
 
   // ========================== Calificación ==========================
   const SendData = async (values) => {
@@ -336,20 +340,33 @@ const handleModalTeacherSubmit = async (values) => {
         </Typography.Text>
       </div>
 
-      <Form form={form} layout="vertical" onFinish={SendData}>
+      <Form form={form} layout="vertical" onFinish={SendData} disabled={isLoadingTeacher}>
         {/* Docente */}
         <Form.Item
           label="Docente"
           name="teacher_id"
           rules={[{ required: true, message: "Selecciona un docente" }]}
         >
-          <Select placeholder="Escribe o selecciona un docente" showSearch optionFilterProp="label">
-            {teachers.map((t) => (
-              <Option key={t.id} value={t.id} label={`${t.name} ${t.apellido_paterno} ${t.apellido_materno}`}>
-                {t.name} {t.apellido_paterno} {t.apellido_materno}
-              </Option>
-            ))}
-          </Select>
+          {
+            isNaN(id) 
+            ?
+            <TeacherSelect/>
+            :
+            isLoadingTeacher
+            ? 
+              <Select
+                disabled={true}
+              />
+            : 
+              <>
+                <Input disabled hidden  />
+                <AutoComplete
+                  disabled
+                  options={[dataTeacher]}
+                  value={`${dataTeacher.name} ${dataTeacher.apellido_paterno} ${dataTeacher.apellido_materno}`}
+                />
+              </>
+          }
         </Form.Item>
 
         <Typography.Link 
@@ -365,13 +382,7 @@ const handleModalTeacherSubmit = async (values) => {
           name="materia_id"
           rules={[{ required: true, message: "Selecciona una materia" }]}
         >
-          <Select placeholder="Escribe o selecciona una materia" showSearch optionFilterProp="label">
-            {subjects.map((s) => (
-              <Option key={s.id} value={s.id} label={s.name}>
-                {s.name}
-              </Option>
-            ))}
-          </Select>
+          <SubjectSelect/>
         </Form.Item>
 
         <Typography.Link 

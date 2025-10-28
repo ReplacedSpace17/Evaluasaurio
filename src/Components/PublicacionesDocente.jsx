@@ -14,15 +14,22 @@ import {
   Grid,
   Rate
 } from "antd";
+import InfiniteScroll from "react-infinite-scroll-component";
+import SubjectSelect from "./Selects/SubjectSelect";
+import { usePagination } from "../hooks/usePagination";
 
-const { Option } = Select;
 const { RangePicker } = DatePicker;
 const { useBreakpoint } = Grid;
 
-const PublicationByID_docente = ({ocultarFoto, publications}) => {
+const PublicationByID_docente = ({ocultarFoto, basePath}) => {
   
-  const [filtered, setFiltered] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const {
+    data: publications, 
+    hasMore: hasMorePublications,
+    nextPage: nextPagePublications,
+    changePath: changePathPublications,
+    setData: setPublications
+  } = usePagination(basePath)
 
   const [filtersEnabled, setFiltersEnabled] = useState(false);
   const [scoreFilterEnabled, setScoreFilterEnabled] = useState(false);
@@ -32,40 +39,33 @@ const PublicationByID_docente = ({ocultarFoto, publications}) => {
 
   const screens = useBreakpoint();
 
+  const handleNextPage = () => {
+    if(hasMorePublications){
+      nextPagePublications()
+    }
+  }
 
+  const handleFilterChange = (e) => {
+    if(!e.target.checked){
+      setFilterMateria("")
+      setFilterDates([])
+      setFilterScore("")
+    }
+    
+    setFiltersEnabled(e.target.checked)
+  }
 
   // Filtros
   useEffect(() => {
-    setLoading(true);
-    let temp = [...publications];
-
-    if (filtersEnabled) {
-      if (filterMateria) {
-        temp = temp.filter((p) => p.materia === filterMateria);
-      }
-      if (scoreFilterEnabled && filterScore !== null) {
-        temp = temp.filter(
-          (p) => p.score >= filterScore && p.score < filterScore + 1
-        );
-      }
-      if (filterDates && filterDates.length === 2) {
-        const [start, end] = filterDates;
-        const startDate = new Date(start);
-        const endDate = new Date(end);
-        temp = temp.filter((p) => {
-          const date = new Date(p.fecha);
-          return date >= startDate && date <= endDate;
-        });
-      }
-    }
-
-    setTimeout(() => {
-      setFiltered(temp);
-      setLoading(false);
-    }, 300);
-  }, [filterMateria, filterScore, scoreFilterEnabled, filterDates, publications, filtersEnabled]);
-
-  const materiasList = [...new Set(publications.map((p) => p.materia))];
+    setPublications([])
+    changePathPublications(
+      basePath+
+      `?subject=${filterMateria ?? ""}`+
+      `&score=${filterScore ?? ""}`+
+      `&initDate=${filterDates[0]?.format("YYYY-MM-DD") ?? ""}`+
+      `&endDate=${filterDates[1]?.format("YYYY-MM-DD") ?? ""}`
+    )
+  }, [filterMateria, filterScore, scoreFilterEnabled, filterDates, filtersEnabled]);
 
   return (
     <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column",}}>
@@ -84,7 +84,7 @@ const PublicationByID_docente = ({ocultarFoto, publications}) => {
           <Col xs={24} style={{ textAlign: "center" }}>
             <Checkbox
               checked={filtersEnabled}
-              onChange={(e) => setFiltersEnabled(e.target.checked)}
+              onChange={handleFilterChange}
             >
               {filtersEnabled ? "Desactivar filtros" : "Activar filtros"}
             </Checkbox>
@@ -93,20 +93,11 @@ const PublicationByID_docente = ({ocultarFoto, publications}) => {
           {filtersEnabled && (
             <>
               <Col xs={24} sm={8}>
-                <Select
-                  size="small"
-                  placeholder="Materia"
-                  allowClear
-                  style={{ width: "100%" }}
-                  value={filterMateria || undefined}
+                <SubjectSelect
+                  placeholder={"Materia"}
                   onChange={setFilterMateria}
-                >
-                  {materiasList.map((m) => (
-                    <Option key={m} value={m}>
-                      {m}
-                    </Option>
-                  ))}
-                </Select>
+                  value={filterMateria}
+                />
               </Col>
 
               <Col xs={24} sm={8} style={{ textAlign: "center" }}>
@@ -148,14 +139,17 @@ const PublicationByID_docente = ({ocultarFoto, publications}) => {
       </Card>
 
       {/* Lista */}
-      <div style={{ flex: 1, overflowY: "auto", padding: 8 }}>
-        {loading ? (
-          <div style={{ textAlign: "center", marginTop: 50 }}>
-            <Spin size="large" />
-          </div>
-        ) : (
+      <div id="publicationsTeacherConatiner" style={{ flex: 1, overflowY: "auto", padding: 8 }}>
+        <InfiniteScroll
+            dataLength={publications.length}
+            next={handleNextPage}
+            hasMore={hasMorePublications}
+            loader={<Spin size="small" />}
+            endMessage={<span>No hay más publicaciones</span>}
+            scrollableTarget={"publicationsTeacherConatiner"}
+          >
           <List
-            dataSource={filtered}
+            dataSource={publications}
             itemLayout="horizontal"
             renderItem={(post) => (
               <List.Item style={{ padding: "8px 0" }}>
@@ -197,7 +191,7 @@ const PublicationByID_docente = ({ocultarFoto, publications}) => {
               </List.Item>
             )}
           />
-        )}
+        </InfiniteScroll>
       </div>
     </div>
   );

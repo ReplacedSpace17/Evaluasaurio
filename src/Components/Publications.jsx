@@ -7,7 +7,6 @@ import {
   Tag,
   Row,
   Col,
-  Select,
   DatePicker,
   Slider,
   Checkbox,
@@ -16,17 +15,16 @@ import {
 import backend from "../config/backend";
 import { useNavigate } from "react-router-dom";
 import { StarFilled } from "@ant-design/icons";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { usePagination } from "../hooks/usePagination";
+import TeacherSelect from "./Selects/TeacherSelect";
+import SubjectSelect from "./Selects/SubjectSelect";
+import DepartamentSelect from "./Selects/DepartamentSelect";
 
-
-const { Option } = Select;
 const { RangePicker } = DatePicker;
 const { useBreakpoint } = Grid;
 
 const Publications = () => {
-  const [publications, setPublications] = useState([]);
-  const [filtered, setFiltered] = useState([]);
-  const [loading, setLoading] = useState(true);
-
   const [filtersEnabled, setFiltersEnabled] = useState(false);
   const [scoreFilterEnabled, setScoreFilterEnabled] = useState(false);
 
@@ -38,6 +36,9 @@ const Publications = () => {
   const navigate = useNavigate();
   const screens = useBreakpoint();
   const url = backend + "/publications/teachers";
+
+  //Hook para la paginacion
+  const {data : publications, setData, nextPage, hasMore, changePath} = usePagination(url);
 
   const renderStars = (score) => {
   const stars = [];
@@ -55,89 +56,31 @@ const Publications = () => {
   }
   return stars;
 };
-
-  const fetchData = () => {
-    setLoading(true);
-    fetch(url)
-      .then((res) => {
-        if (!res.ok) throw new Error("HTTP error " + res.status);
-        return res.json();
-      })
-      .then((data) => {
-        if (Array.isArray(data)) {
-          setPublications(data);
-          setFiltered(data);
-        }
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Fetch error:", err);
-        setLoading(false);
-      });
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, [url]);
-
-  useEffect(() => {
-    setLoading(true);
-    let temp = [...publications];
-
-    if (filtersEnabled) {
-      if (filterTeacher) {
-        temp = temp.filter((p) =>
-          `${p.nombre_docente} ${p.apellido_paterno} ${p.apellido_materno}`
-            .toLowerCase()
-            .includes(filterTeacher.toLowerCase())
-        );
-      }
-      if (filterMateria) {
-        temp = temp.filter((p) => p.materia === filterMateria);
-      }
-      if (filterDepartamento) {
-        temp = temp.filter((p) => p.departamento === filterDepartamento);
-      }
-      if (scoreFilterEnabled && filterScore !== null) {
-        temp = temp.filter(
-          (p) => p.puntaje >= filterScore && p.puntaje < filterScore + 1
-        );
-      }
-      if (filterDates && filterDates.length === 2) {
-        const [start, end] = filterDates;
-        const startDate = new Date(start);
-        const endDate = new Date(end);
-        temp = temp.filter((p) => {
-          const date = new Date(p.fecha_evaluacion);
-          return date >= startDate && date <= endDate;
-        });
-      }
+  
+  const handleFilterChange = (e) => {
+    if(!e.target.checked){
+      //Limpiamos los filtros para volver hacer fetch limpio
+      setFilterTeacher("")
+      setFilterMateria("")
+      setFilterDepartamento("")
+      setFilterScore("")
+      setFilterDates([])
     }
 
-    setTimeout(() => {
-      setFiltered(temp);
-      setLoading(false);
-    }, 300); // pequeño delay para que se vea el loading
-  }, [
-    filterTeacher,
-    filterMateria,
-    filterDepartamento,
-    filterScore,
-    scoreFilterEnabled,
-    filterDates,
-    publications,
-    filtersEnabled
-  ]);
+    setFiltersEnabled(e.target.checked)
+  }
 
-  const teachersList = [
-    ...new Set(
-      publications.map(
-        (p) => `${p.nombre_docente} ${p.apellido_paterno} ${p.apellido_materno}`
-      )
-    )
-  ];
-  const materiasList = [...new Set(publications.map((p) => p.materia))];
-  const departamentosList = [...new Set(publications.map((p) => p.departamento))];
+  useEffect(() => {
+    setData([])
+      changePath(
+        `${url}?teacher=${filterTeacher ?? ""}`+
+        `&subject=${filterMateria ?? ""}`+
+        `&departament=${filterDepartamento ?? ""}`+
+        `&score=${filterScore ?? ""}`+
+        `&initDate=${filterDates[0]?.format("YYYY-MM-DD") ?? ""}`+
+        `&endDate=${filterDates[1]?.format("YYYY-MM-DD") ?? ""}`
+        )
+  }, [filterTeacher, filterMateria, filterDepartamento, filterScore,filterDates])
 
   const handleProfessorClick = (id) => {
     navigate(`/teacher/${id}`);
@@ -161,7 +104,7 @@ const Publications = () => {
           <Col xs={24}>
             <Checkbox
               checked={filtersEnabled}
-              onChange={(e) => setFiltersEnabled(e.target.checked)}
+              onChange={handleFilterChange}
             >
               {filtersEnabled ? "Desactivar filtros" : "Activar filtros"}
             </Checkbox>
@@ -170,53 +113,31 @@ const Publications = () => {
           {filtersEnabled && (
             <>
               <Col xs={12} sm={8}>
-                <Select
+                <TeacherSelect
                   size="small"
-                  showSearch
-                  allowClear
-                  placeholder="Docente"
-                  style={{ width: "100%" }}
+                  initFecth={false}
+                  placeholder={"Maestro"}
                   value={filterTeacher || undefined}
                   onChange={setFilterTeacher}
-                >
-                  {teachersList.map((t) => (
-                    <Option key={t} value={t}>
-                      {t}
-                    </Option>
-                  ))}
-                </Select>
+                />
               </Col>
               <Col xs={12} sm={8}>
-                <Select
-                  size="small"
-                  placeholder="Materia"
-                  allowClear
-                  style={{ width: "100%" }}
-                  value={filterMateria || undefined}
+                <SubjectSelect
                   onChange={setFilterMateria}
-                >
-                  {materiasList.map((m) => (
-                    <Option key={m} value={m}>
-                      {m}
-                    </Option>
-                  ))}
-                </Select>
+                  size="small"
+                  initFecth={false}
+                  placeholder={"Materia"}
+                  value={filterMateria || undefined}
+                />
               </Col>
               <Col xs={12} sm={8}>
-                <Select
-                  size="small"
-                  placeholder="Departamento"
-                  allowClear
-                  style={{ width: "100%" }}
-                  value={filterDepartamento || undefined}
+                <DepartamentSelect
                   onChange={setFilterDepartamento}
-                >
-                  {departamentosList.map((d) => (
-                    <Option key={d} value={d}>
-                      {d}
-                    </Option>
-                  ))}
-                </Select>
+                  size="small"
+                  initFecth={false}
+                  placeholder={"Departamento"}
+                  value={filterDepartamento || undefined}
+                />
               </Col>
 
               {/* Checkbox de Puntaje */}
@@ -259,15 +180,18 @@ const Publications = () => {
       </div>
 
       {/* Lista */}
-      <div style={{ flex: 1, overflowY: "auto", padding: 8 }}>
-        {loading ? (
-          <div style={{ textAlign: "center", marginTop: 50 }}>
-            <Spin size="large" />
-          </div>
-        ) : (
-          <> <h3 style={{ margin: "8px 0", color: "#333" }}>Calificaciones recientes</h3>
+      <div id="listPublicationsContainer" style={{ flex: 1, overflowY: "auto", padding: 8 }}>
+        <h3 style={{ margin: "8px 0", color: "#333" }}>Calificaciones recientes</h3>
+          <InfiniteScroll
+            dataLength={publications.length}
+            next={nextPage}
+            hasMore={hasMore}
+            loader={<Spin size="small" />}
+            endMessage={<span>No hay más publicaciones</span>}
+            scrollableTarget="listPublicationsContainer"
+          >
           <List
-            dataSource={filtered}
+            dataSource={publications}
             itemLayout="horizontal"
             
             renderItem={(post) => (
@@ -318,8 +242,7 @@ const Publications = () => {
               </List.Item>
             )}
           />
-          </>
-        )}
+          </InfiniteScroll>
       </div>
     </div>
   );
