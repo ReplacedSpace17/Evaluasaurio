@@ -1,0 +1,124 @@
+{
+  "colectivo": "Singularity MX",
+  "ultima_actualizacion": "2025-10-17",
+  "version": "2.0.0",
+  
+  "proposito_especifico": {
+    "titulo": "Propósito Educativo y de Mejora Continua",
+    "contenido": "Esta plataforma tiene como objetivo fomentar la mejora continua de la institución educativa mediante la recopilación de experiencias y opiniones de la comunidad estudiantil, en ejercicio del derecho a la libertad de expresión reconocido en el Artículo 6 del Reglamento para la Comunidad Estudiantil del TecNM y los Artículos 6°, 7° y 8° de la Constitución Política de los Estados Unidos Mexicanos."
+  },
+  
+  "base_legal": {
+    "titulo": "Fundamento Legal y Reglamentario",
+    "puntos": [
+      "Constitución Política de los Estados Unidos Mexicanos, Artículos 6°, 7° y 8°",
+      "Ley Federal de Protección de Datos Personales en Posesión de los Particulares",
+      "Reglamento de Estudiantes del TecNM, Artículo 6, Fracciones XIII y XVI",
+      "Reglamento de Estudiantes del TecNM, Artículo 7, Fracción VIII",
+      "Principio de Proscripción de la violencia (Artículo 5, IV del Reglamento Estudiantil)"
+    ]
+  },
+
+  "marco_reglamentario": {
+    "titulo": "Alineación con el Reglamento Estudiantil del TecNM",
+    "puntos": [
+      "Ejercicio del derecho a expresar libremente ideas y opiniones de manera responsable (Art. 6, XIII)",
+      "Manifestación respetuosa y pacífica de sugerencias e inconformidades (Art. 6, XVI)",
+      "Participación en mecanismos de evaluación del desempeño docente (Art. 7, VIII)",
+      "Respeto a la integridad de la comunidad del TecNM (Art. 7, I)",
+      "Observancia de comportamiento que enaltezca la institución (Art. 7, XIV)"
+    ]
+  },
+
+  "aviso_legal": {
+    "identidad": {
+      "titulo": "Identidad y Naturaleza del Colectivo",
+      "contenido": "El presente sitio web y sus servicios digitales son gestionados por el Colectivo Singularity, grupo abierto de colaboración sin personalidad jurídica formal, constituido por estudiantes y colaboradores con fines educativos, recreativos y de desarrollo tecnológico. El Colectivo no persigue fines de lucro ni actividades comerciales, y su operación se enmarca dentro de un proyecto abierto y participativo ('open project')."
+    },
+    
+    "objeto": {
+      "titulo": "Objeto de la Plataforma",
+      "contenido": "El sitio tiene como propósito principal proporcionar un espacio libre de expresión, interacción, experimentación tecnológica y participación comunitaria, incluyendo herramientas, dinámicas o actividades de carácter informativo, recreativo o experimental. El uso de la plataforma implica la aceptación plena del presente Aviso Legal y de Privacidad."
+    },
+
+    "responsabilidad": {
+      "titulo": "Responsabilidad sobre los Contenidos",
+      "puntos": [
+        "Los comentarios, opiniones, valoraciones, publicaciones y aportaciones realizadas por los usuarios son de exclusiva responsabilidad de quien las emite.",
+        "El Colectivo no se hace responsable de las opiniones o manifestaciones vertidas por los usuarios, ni de la exactitud o veracidad de los contenidos publicados por terceros.",
+        "Los administradores del sitio moderarán activamente, suspenderán o eliminarán contenidos que resulten ofensivos, falsos, difamatorios o contrarios a la convivencia respetuosa establecida en el Reglamento de Estudiantes del TecNM.",
+        "El Colectivo no garantiza la disponibilidad ininterrumpida del servicio ni se responsabiliza por fallos técnicos o interrupciones del mismo."
+      ]
+    },
+    "alcance_territorial": {
+  "titulo": "Alcance Territorial y Deslinde Jurisdiccional",
+  "puntos": [
+    "La plataforma opera en espacio digital independiente, sin uso de infraestructura del TecNM",
+    "No se realizan actividades dentro de las instalaciones físicas del TecNM",
+    "El Colectivo no representa oficialmente al TecNM ni usa sus recursos institucionales",
+    "Las opiniones vertidas son personales de los usuarios, no del Colectivo"
+  ]
+},
+
+
+    "compromiso_moderacion": {
+      "titulo": "Compromiso de Moderación Proactiva",
+      "puntos": [
+        "Eliminación inmediata de contenido difamatorio, insultante o que incite a la violencia",
+        "Respuesta a solicitudes de modificación en un plazo máximo de 96 horas",
+        "Mantenimiento de un tono constructivo y de mejora institucional",
+        "Respeto irrestricto a la dignidad de todos los miembros de la comunidad educativa"
+      ]
+    },
+
+    "datos_personales": {
+      "titulo": "Protección de Datos Personales",
+      "puntos": [
+        "El Colectivo no recopila, almacena ni trata información personal identificable de los usuarios que interactúan con la plataforma, salvo en los casos en que el propio usuario la proporcione de manera voluntaria.",
+        "En caso de que se llegara a almacenar temporalmente información técnica (como dirección IP o cookies), esta se utilizará únicamente con fines estadísticos o de funcionamiento técnico, y no será cedida a terceros.",
+        "La participación en la plataforma implica el consentimiento del usuario respecto al tratamiento limitado y temporal de los datos técnicos antes descritos."
+      ]
+    },
+
+    "informacion_publica": {
+      "titulo": "Uso de Nombres, Datos e Información Pública",
+      "puntos": [
+        "Toda referencia a personas, instituciones o entidades dentro de la plataforma se realiza únicamente con base en información pública disponible libremente en medios oficiales o institucionales.",
+        "En ningún caso se difundirán datos personales, privados o confidenciales.",
+        "Las evaluaciones y comentarios sobre el desempeño docente e institucional tienen carácter formativo y de mejora continua."
+      ]
+    },
+
+    "limitacion_responsabilidad": {
+      "titulo": "Limitación de Responsabilidad",
+      "puntos": [
+        "El uso de la plataforma se realiza bajo el propio riesgo y responsabilidad del usuario.",
+        "Ni el Colectivo ni sus miembros serán responsables por daños directos, indirectos, incidentales o consecuenciales, ni por cualquier reclamación derivada del uso o interpretación de la información contenida en la plataforma.",
+        "El Colectivo no será responsable por la difusión, modificación o mal uso de los contenidos por parte de terceros ajenos al proyecto."
+      ]
+    },
+"moderacion": {
+  "titulo": "Moderación y Ejercicio de Derechos",
+  "contenido": "Los usuarios podrán solicitar la revisión o eliminación de contenidos que consideren incorrectos, ofensivos o inadecuados mediante los canales de contacto designados. El Colectivo evaluará dichas solicitudes de buena fe, manteniendo siempre el equilibrio entre la libertad de expresión y el respeto a la comunidad educativa. Se priorizará la atención a contenido que pueda constituir difamación, incitación a la violencia o violación grave de derechos."
+},
+
+"propiedad_intelectual": {
+  "titulo": "Propiedad Intelectual y Licencia Abierta",
+  "contenido": "El contenido propio del Colectivo Singularity se distribuye bajo licencia MIT, permitiendo uso, copia, modificación y difusión con fines no comerciales. Los contenidos de usuarios se consideran contribuciones bajo fair use para fines educativos. Se respetan todos los derechos de propiedad intelectual del TecNM."
+},
+    "modificaciones": {
+      "titulo": "Modificaciones al Aviso",
+      "contenido": "El Colectivo se reserva el derecho de modificar, actualizar o ampliar el presente Aviso Legal y de Privacidad en cualquier momento, sin notificación previa. Las modificaciones entrarán en vigor en el momento de su publicación en esta página."
+    },
+
+    "jurisdiccion": {
+      "titulo": "Jurisdicción y Legislación Aplicable",
+      "contenido": "Dado que el Colectivo Singularity carece de personalidad jurídica formal y actúa sin fines comerciales, cualquier conflicto o reclamación se resolverá conforme a los principios de buena fe, ética académica y respeto a la libertad de expresión, conforme a las leyes aplicables en los Estados Unidos Mexicanos, en la medida que correspondan."
+    },
+
+    "contacto": {
+      "titulo": "Contacto",
+      "contenido": "Para cualquier aclaración, solicitud o comunicación, se podrá contactar al administrador del sitio o a los miembros designados del Colectivo Singularity a través de los medios de contacto publicados en la plataforma."
+    }
+  }
+}

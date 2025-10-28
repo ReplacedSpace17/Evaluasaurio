@@ -23,7 +23,7 @@
   },
   {
     "nameversion": "v1.2.0",
-    "date": "20-Oct-2025",
+    "date": "17-Oct-2025",
     "resume": "Nueva sección de evaluación de departamentos y mejoras varias",
     "changes": [
       "Se agregó una nueva sección para la evaluación de departamentos.",
@@ -35,5 +35,16 @@
       "Se agregó un apartado de reportes para incidentes."
     ],
     "description": "Esta versión introduce una nueva sección para la evaluación de departamentos, además de incorporar docentes y materias que faltaban. También se añadió un menú de inicio para mejorar la navegación, un sistema de eventos mensuales para mantener la plataforma dinámica, un apartado de reportes para incidentes, y un minijuego especial de Halloween disponible por tiempo limitado."
+  },
+  {
+    "nameversion": "v1.3.0",
+    "date": "19-Oct-2025",
+    "resume": "Nueva sistema de reportes de publicaciones e incidentes",
+    "changes": [
+      "Se agregó el aviso de privacidad en el menu y en el footer.",
+      "Se agregó el sistema de reportes en opiniones de departamentos y docentes.",
+      "Se incorporó el apartado para administradores para atender reportes."
+    ],
+    "description": "Esta versión introduce un nuevo sistema de reportes para publicaciones e incidentes, permitiendo a los usuarios reportar contenido inapropiado o problemas técnicos. Además, se añadió el aviso de privacidad en el menú y en el footer para cumplir con las regulaciones de protección de datos."
   }
 ]
