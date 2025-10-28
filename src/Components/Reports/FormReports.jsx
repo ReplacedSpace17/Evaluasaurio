@@ -152,7 +152,7 @@ formData.append("fecha_hora", fechaHora);
           <TextArea
             rows={4}
             placeholder="Describe detalladamente lo ocurrido..."
-            maxLength={2000}
+            maxLength={3000}
             style={{ resize: "none" }}
           />
         </Form.Item>

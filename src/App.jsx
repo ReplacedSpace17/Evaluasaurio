@@ -21,10 +21,13 @@ import ViewSubmitDepartament from './views/Departamentos_home/ViewSubmitDepartam
 import Profile_departamento from './views/Departamentos_home/Profile_departamento.jsx';
 import Reportes_form from "./views/Reportes/Home_reportes.jsx";
 import View_Form_Reports from "./views/Reportes/ViewFormReports.jsx";
-
+import PrivacyPolicy from "./views/Privacy/Privacy.jsx";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import "react-datepicker/dist/react-datepicker.css";
+
+import LoginAdmin from './views/Admin/LoginAdmin.jsx';
+import HomeAdmin from './views/Admin/HomeAdmin.jsx';
 
 import Halloween from './views/Eventos/Halloween/Halloween.jsx';
 
@@ -50,7 +53,11 @@ const App = () => {
         <Route path="/realtime" element={<ViewCouter />} />
         <Route path="/intro" element={<Intro />} />
         <Route path="/loader" element={<SplashScreen />} />
-        <Route path="/admin" element={<EstadisticasVisitas />} />
+        
+        <Route path="/admin" element={<HomeAdmin />} />
+        <Route path="/admin/login" element={<LoginAdmin />} />
+        <Route path="/admin/stats" element={<EstadisticasVisitas />} />
+
         <Route path="/menu" element={<Menu />} />
         <Route path="/evaluaciones/departamentos" element={<HomeDepartamentos />} />
         <Route path="/submit/departament/:id" element={<ViewSubmitDepartament />} />
@@ -60,6 +67,7 @@ const App = () => {
         <Route path="/events/halloween" element={<Halloween />} />
         <Route path="/reports" element={<Reportes_form/>} />
         <Route path="/reports/submit" element={<View_Form_Reports/>} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
       </Routes>
     </Router>

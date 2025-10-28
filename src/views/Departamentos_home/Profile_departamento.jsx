@@ -55,6 +55,7 @@ const Profile_departamento = () => {
           // Adaptar las opiniones al formato que usa PublicationByID_departaments
           const mappedOpiniones =
             data.opiniones?.map((op) => ({
+              id: op.id,
               opinion: op.opiniones,
               keywords: op.keywords,
               score: op.calificacion,

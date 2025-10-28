@@ -6,6 +6,16 @@ const getVisitado = () => {
  // Si no existe, retornar false
   return visitado === "true" ? true : false;
 };
+// 🧩 Verificar si ya acepto el aviso de privacidad
+const getPolicyAccepted = () => {
+  const accepted = localStorage.getItem("policyAccepted");
+  return accepted === "true" ? true : false;
+};
+
+//setear que el aviso de privacidad fue aceptado
+const setPolicyAccepted = () => {
+  localStorage.setItem("policyAccepted", "true");
+};
 
 const setVisitado = () => {
   localStorage.setItem("isNew", "true");
@@ -36,4 +46,4 @@ const setLastVersionSeen = () => {
 
 
 
-export { getVisitado, setVisitado, getLastVersionSeen, setLastVersionSeen, getDataVersion };
+export { getVisitado, setVisitado, getLastVersionSeen, setLastVersionSeen, getDataVersion, getPolicyAccepted, setPolicyAccepted };

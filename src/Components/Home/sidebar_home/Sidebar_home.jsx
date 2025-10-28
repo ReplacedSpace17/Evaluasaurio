@@ -25,12 +25,7 @@ const Sidebar_home = ({ width_component, title, padding_content }) => {
       title: "¿Puedo colaborar?",
       answer:
         "Claro, en Singularity siempre estamos abiertos a recibir colaboraciones. Puedes contactarnos a través de nuestras redes sociales o al siguiente correo electrónico: replacedspace17@singularitymx.org",
-    },
-        {
-      title: "¿Puedo implementarlo en mi institución?",
-      answer:
-        "Por supuesto, Evaluasaurio está diseñado para ser una herramienta flexible y adaptable. Si estás interesado en implementarlo en tu institución, no dudes en contactarnos para discutir los detalles. También puedes revisar el repositorio del proyecto en: https://github.com/ReplacedSpace17/Evaluasaurio",
-    },
+    }
   ];
 
   return (
