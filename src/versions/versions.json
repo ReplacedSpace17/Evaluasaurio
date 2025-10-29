@@ -46,5 +46,15 @@
       "Se incorporó el apartado para administradores para atender reportes."
     ],
     "description": "Esta versión introduce un nuevo sistema de reportes para publicaciones e incidentes, permitiendo a los usuarios reportar contenido inapropiado o problemas técnicos. Además, se añadió el aviso de privacidad en el menú y en el footer para cumplir con las regulaciones de protección de datos."
+  },
+  {
+    "nameversion": "v1.3.1",
+    "date": "21-Oct-2025",
+    "resume": "Validación de carga de archivo en el sistema de reportes",
+    "changes": [
+      "Se implementaron las validaciones de carga de archivos en el sistema de reportes."
+      
+    ],
+    "description": "Esta versión se centra en corregir errores en el sistema de reportes introducido en la versión anterior, asegurando que los usuarios puedan enviar reportes sin problemas."
   }
 ]
