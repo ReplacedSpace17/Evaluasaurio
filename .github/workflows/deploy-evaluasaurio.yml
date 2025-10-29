@@ -34,23 +34,22 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           script: |
             rm -rf /home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/app
-            mkdir -p /home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/app
 
-      # 5. Subir contenido de dist directamente dentro de app
-      - name: Upload dist contents to app folder
+      # 5. Subir carpeta dist al servidor
+      - name: Upload dist folder
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.FTP_HOST }}
           port: 65002
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          source: "dist/*"  # Solo el contenido de dist, sin la carpeta dist
-          target: "/home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/app/"
+          source: "dist"
+          target: "/home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/"
           rm: false
           overwrite: true
 
-      # 6. Crear .htaccess dentro de app
-      - name: Create .htaccess in app folder
+      # 6. Renombrar dist a app y crear .htaccess dentro de app
+      - name: Rename dist to app and create .htaccess
         uses: appleboy/ssh-action@v0.1.7
         with:
           host: ${{ secrets.FTP_HOST }}
@@ -58,6 +57,9 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           script: |
+            mv /home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/dist \
+               /home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/app
+            # Crear .htaccess dentro de app
             echo "<IfModule mod_rewrite.c>" > /home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/app/.htaccess
             echo "  RewriteEngine On" >> /home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/app/.htaccess
             echo "  RewriteBase /" >> /home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/app/.htaccess
