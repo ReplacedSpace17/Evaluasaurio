@@ -40,7 +40,19 @@ jobs:
           echo "  RewriteRule . /index.html [L]" >> app/.htaccess
           echo "</IfModule>" >> app/.htaccess
 
-      # 5. Desplegar carpeta app/ dentro de evaluasaurio/
+      # 5. Limpiar carpeta app en el servidor
+      - name: Clean app folder on server
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.FTP_HOST }}
+          port: 65002
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          script: |
+            rm -rf /home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/app
+            mkdir /home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/app
+
+      # 6. Desplegar carpeta app/ dentro de evaluasaurio/
       - name: Deploy Evaluasaurio App
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -49,6 +61,6 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           source: "app/*"
-          target: "/home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/"
-          rm: true
-          overwrite: true
+          target: "/home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/app/"
+          rm: false        # no borra otras carpetas
+          overwrite: true  # reemplaza archivos existentes
