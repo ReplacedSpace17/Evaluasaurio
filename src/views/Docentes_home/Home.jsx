@@ -101,7 +101,7 @@ const HomeDocentes = () => {
         </Sider>
 
         <Content style={{ padding: 24, background: "#f5f5f5", height: "100%", overflow: "hidden", display: "flex", flexDirection: "column", alignItems: "center" }}>
-          <Layout style={{ maxWidth:800, minWidth:350, width: '80%', height: "100%", overflowY: "auto" , backgroundColor: "transparent" }}>
+          <Layout style={{ maxWidth:800, minWidth:350, width: '80%', height: "100%", overflowY: "hidden" , backgroundColor: "transparent" }}>
             <motion.h1 style={{ fontSize:  "1.1rem" , fontWeight: "300", lineHeight: 1.2, color: "#454545ff", marginBottom: "0.5rem", textAlign:"center" }}>
             Evaluación docente
           </motion.h1>
