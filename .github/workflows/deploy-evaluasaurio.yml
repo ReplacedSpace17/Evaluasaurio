@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout
+      # 1. Checkout del código
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -18,17 +18,29 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # 3. Build
+      # 3. Build del proyecto
       - name: Build project
         run: npm run build
 
-      # 4. Preparar archivos para despliegue (solo contenido de dist/)
+      # 4. Preparar carpeta app con .htaccess
       - name: Prepare deployment folder
         run: |
-          mkdir upload
-          cp -r dist/* upload/
+          mkdir app
+          cp -r dist/* app/
+          cat <<EOF > app/.htaccess
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
 
-      # 5. Deploy via SCP (solo contenido)
+  # Redirigir todas las rutas a index.html
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+EOF
+
+      # 5. Desplegar carpeta app/ a la ruta /evaluasaurio/
       - name: Deploy Evaluasaurio App
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -36,7 +48,7 @@ jobs:
           port: 65002
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          source: "upload/*"   # 👈 ahora sí, solo los archivos finales
-          target: "/home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/app/"
-          overwrite: true
+          source: "app/*"
+          target: "/home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/"
           rm: true
+          overwrite: true
