@@ -47,6 +47,6 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           source: "app/*"
-          target: "/home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/app/"
+          target: "/home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/"
           rm: true
           overwrite: true
