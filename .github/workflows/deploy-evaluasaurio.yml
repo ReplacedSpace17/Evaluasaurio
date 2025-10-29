@@ -27,8 +27,10 @@ jobs:
       # 4. Preparar carpeta app con .htaccess
       - name: Prepare deployment folder
         run: |
-          mkdir app
+          mkdir -p app
+          # Copiar solo el contenido de dist/ a app/ sin crear subcarpetas extra
           cp -r dist/* app/
+          # Crear archivo .htaccess para redirección de rutas
           echo "<IfModule mod_rewrite.c>" > app/.htaccess
           echo "  RewriteEngine On" >> app/.htaccess
           echo "  RewriteBase /" >> app/.htaccess
@@ -60,7 +62,7 @@ jobs:
           port: 65002
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          source: "app/*"
+          source: "app/*"   # Solo el contenido de app/, sin app/app/
           target: "/home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/app/"
-          rm: false        # no borra otras carpetas
-          overwrite: true  # reemplaza archivos existentes
+          rm: false
+          overwrite: true
