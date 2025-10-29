@@ -180,30 +180,43 @@ formData.append("fecha_hora", fechaHora);
         {/* Foto */}
  <Form.Item label="Evidencia fotográfica (opcional)">
   {/* Input oculto que abre la cámara */}
-  <input
-    type="file"
-    accept="image/*"
-    capture="environment" // cámara trasera
-    style={{ display: "none" }}
-    id="cameraInput"
-    onChange={(e) => {
-      if (e.target.files.length > 0) {
-        setFileList([{ originFileObj: e.target.files[0], uid: '-1', name: e.target.files[0].name }]);
+ <input
+  type="file"
+  accept="image/*"
+  capture="environment"
+  style={{ display: "none" }}
+  id="cameraInput"
+  onChange={(e) => {
+    if (e.target.files.length > 0) {
+      const file = e.target.files[0];
+      if (!file.type.startsWith("image/")) {
+        message.error("Solo se permiten archivos de imagen.");
+        return;
       }
-    }}
-  />
+      setFileList([{ originFileObj: file, uid: '-1', name: file.name }]);
+    }
+  }}
+/>
 
-  <Upload
-    beforeUpload={() => false} // No subir automáticamente
-    fileList={fileList}
-    onChange={({ fileList }) => setFileList(fileList.slice(-1))} // Solo 1 foto
-    listType="picture"
-    accept="image/*"
-    maxCount={1} // Solo 1 imagen
-    style={{ width: "100%" }}
-  >
-    <Button style={{ width: "100%" }} icon={<UploadOutlined />}>Subir desde galería</Button>
-  </Upload>
+
+<Upload
+  beforeUpload={(file) => {
+    const isImage = file.type.startsWith("image/");
+    if (!isImage) {
+      message.error("Solo se permiten archivos de imagen.");
+    }
+    return isImage ? true : Upload.LIST_IGNORE; // Ignora archivos no válidos
+  }}
+  fileList={fileList}
+  onChange={({ fileList }) => setFileList(fileList.slice(-1))} // Solo 1 foto
+  listType="picture"
+  accept="image/*"
+  maxCount={1} // Solo 1 imagen
+  style={{ width: "100%" }}
+>
+  <Button style={{ width: "100%" }} icon={<UploadOutlined />}>Subir desde galería</Button>
+</Upload>
+
 
   <Button
     icon={<CameraOutlined />}
