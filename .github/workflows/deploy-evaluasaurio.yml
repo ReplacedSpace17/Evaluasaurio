@@ -3,26 +3,22 @@ name: Deploy Evaluasaurio App
 on:
   push:
     branches:
-      - main  # Se ejecuta cuando haces push a main
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout del código
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 2. Instalar dependencias
       - name: Install dependencies
         run: npm ci
 
-      # 3. Build del proyecto
       - name: Build project
-        run: npm run build  # crea la carpeta dist/
+        run: npm run build
 
-      # 4. Deploy via SFTP
       - name: Deploy Evaluasaurio App via SFTP
         uses: appleboy/ssh-action@v0.1.7
         with:
@@ -30,7 +26,7 @@ jobs:
           port: ${{ secrets.HOSTINGER_PORT }}
           username: ${{ secrets.HOSTINGER_USER }}
           password: ${{ secrets.HOSTINGER_PASSWORD }}
-          sync: 
-            - local: "dist/"
-              remote: "/home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/app/"
-          delete: false        # mantiene archivos que no están en local (ej. .htaccess)
+          source: "dist/"   # carpeta local
+          target: "/home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/app/"
+          recursive: true   # sube subcarpetas y archivos
+          delete: false     # no borra archivos que no están en dist
