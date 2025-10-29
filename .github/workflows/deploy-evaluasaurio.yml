@@ -30,7 +30,7 @@ jobs:
           port: 65002
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          source: "dist/."   # 👈 Copia SOLO el contenido interno de dist
+          source: "./dist/*"   # 👈 Copia SOLO el contenido, no la carpeta dist
           target: "/home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/app/"
-          overwrite: true     # 👈 Reemplaza los archivos existentes
-          rm: true            # 👈 Limpia archivos temporales después
+          overwrite: true
+          rm: true
