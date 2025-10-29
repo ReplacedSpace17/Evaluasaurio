@@ -27,8 +27,10 @@ jobs:
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.FTP_HOST }}
-          port: 65002                 # Aquí va tu puerto directamente
+          port: 65002
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          source: "dist/*"            # carpeta build local
+          source: "dist/."   # 👈 Copia SOLO el contenido interno de dist
           target: "/home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/app/"
+          overwrite: true     # 👈 Reemplaza los archivos existentes
+          rm: true            # 👈 Limpia archivos temporales después
