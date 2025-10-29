@@ -27,20 +27,18 @@ jobs:
         run: |
           mkdir app
           cp -r dist/* app/
-          cat <<EOF > app/.htaccess
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
+          echo "<IfModule mod_rewrite.c>" > app/.htaccess
+          echo "  RewriteEngine On" >> app/.htaccess
+          echo "  RewriteBase /" >> app/.htaccess
+          echo "" >> app/.htaccess
+          echo "  # Redirigir todas las rutas a index.html" >> app/.htaccess
+          echo "  RewriteRule ^index\\.html$ - [L]" >> app/.htaccess
+          echo "  RewriteCond %{REQUEST_FILENAME} !-f" >> app/.htaccess
+          echo "  RewriteCond %{REQUEST_FILENAME} !-d" >> app/.htaccess
+          echo "  RewriteRule . /index.html [L]" >> app/.htaccess
+          echo "</IfModule>" >> app/.htaccess
 
-  # Redirigir todas las rutas a index.html
-  RewriteRule ^index\.html$ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.html [L]
-</IfModule>
-EOF
-
-      # 5. Desplegar carpeta app/ a la ruta /evaluasaurio/
+      # 5. Desplegar carpeta app/ dentro de evaluasaurio/app/
       - name: Deploy Evaluasaurio App
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -49,6 +47,6 @@ EOF
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           source: "app/*"
-          target: "/home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/"
+          target: "/home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/app/"
           rm: true
           overwrite: true
