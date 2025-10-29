@@ -22,7 +22,13 @@ jobs:
       - name: Build project
         run: npm run build
 
-      # 4. Deploy via SCP
+      # 4. Preparar archivos para despliegue (solo contenido de dist/)
+      - name: Prepare deployment folder
+        run: |
+          mkdir upload
+          cp -r dist/* upload/
+
+      # 5. Deploy via SCP (solo contenido)
       - name: Deploy Evaluasaurio App
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -30,7 +36,7 @@ jobs:
           port: 65002
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          source: "./dist/*"   # 👈 Copia SOLO el contenido, no la carpeta dist
+          source: "upload/*"   # 👈 ahora sí, solo los archivos finales
           target: "/home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/app/"
           overwrite: true
           rm: true
