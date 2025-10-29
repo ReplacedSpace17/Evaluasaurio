@@ -3,14 +3,14 @@ name: Deploy Evaluasaurio App
 on:
   push:
     branches:
-      - main  # Se ejecuta cuando haces push a main
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout del código
+      # 1. Checkout
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -18,18 +18,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # 3. Build del proyecto
+      # 3. Build
       - name: Build project
-        run: npm run build  # crea la carpeta dist/
+        run: npm run build
 
       # 4. Deploy via SCP
-      - name: Deploy Evaluasaurio App via SCP
+      - name: Deploy Evaluasaurio App
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.FTP_HOST }}
-          port: ${{ secrets.FTP_PORT }}       
+          port: 65002                 # Aquí va tu puerto directamente
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          source: "dist/*"                    # carpeta build local
+          source: "dist/*"            # carpeta build local
           target: "/home/u326980243/domains/singularitymx.org/public_html/subproyectos/evaluasaurio/app/"
-          recursive: true                     # sube subcarpetas y archivos
