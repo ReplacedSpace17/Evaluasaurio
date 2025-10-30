@@ -6,6 +6,6 @@
         "descripcion": "Prepárate para vivir una experiencia única este Halloween académico con “Maestros del Terror”, un evento en el que los estudiantes se convierten en jueces y los maestros en las más temidas leyendas del aula.",
         "navigate":"/events/halloween",
         "img": "/assets/events/maestros.png",
-        "visible": true
+        "visible": false
     }
 ]
