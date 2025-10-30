@@ -18,6 +18,6 @@
         "name": "Maestros del Terror",
         "img": "/assets/novedades/halloween2.png",
         "url": "none",
-        "visible": true
+        "visible": false
     }
 ]
