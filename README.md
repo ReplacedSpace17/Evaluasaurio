@@ -123,7 +123,7 @@ npm  run  build
 
 ## Licencia
 
-Este proyecto fue desarrollado por [@Replacedspace17](https://github.com/ReplacedSpace17)  y [@cessdel](https://github.com/cessdel) parte de [@Singularity-MX](https://github.com/Singularity-MX/) y se distribuye bajo la **Licencia GPL**, permitiendo la libre distribución y modificación del software respetando los términos de la licencia.
+Este proyecto fue desarrollado por [@Replacedspace17](https://github.com/ReplacedSpace17), [@cessdel](https://github.com/cessdel) parte de [@Singularity-MX](https://github.com/Singularity-MX/) y [@CryZRz](https://github.com/CryZRz). Se distribuye bajo la **Licencia GPL**, permitiendo la libre distribución y modificación del software respetando los términos de la licencia.
 
 ## Contacto
 Para dudas, sugerencias o contribuciones, contacta a [@Replacedspace17](https://github.com/ReplacedSpace17)  o [@cessdel](https://github.com/cessdel) parte del colectivo [@Singularity-MX](https://github.com/Singularity-MX/) en GitHub.
