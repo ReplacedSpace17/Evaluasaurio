@@ -115,11 +115,13 @@ npm  run  build
 
 - La aplicación muestra estadísticas agregadas y rankings de docentes mejor evaluados.
 
-## Capturas de pantalla
+- Para acceder al área de administración (dar de alta materias y profesores), ir a:  http://localhost:3000/admin/login, seleccionar Nuevo adminstrador, establecer las creedenciales de acceso e iniciar sesión.
 
-<img src="./screenshots/home.png" alt="Logo de Evaluasaurio" width="70%"/>
-<img src="./screenshots/profile.png" alt="Logo de Evaluasaurio" width="70%"/>
-<img src="./screenshots/calificar.png" alt="Logo de Evaluasaurio" width="70%"/>
+## Capturas de pantalla
+<img src="./screenshots/menu.png" alt="Menu de app" width="100%"/>
+<img src="./screenshots/home.png" alt="Inicio de la app" width="100%"/>
+<img src="./screenshots/profile.png" alt="Perfil de docente" width="100%"/>
+<img src="./screenshots/reportes.png" alt="Reportes estudiantiles" width="100%"/>
 
 ## Licencia
 
