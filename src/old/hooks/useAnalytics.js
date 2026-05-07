@@ -30,7 +30,7 @@ const useAnalytics = () => {
     });
 
     const interval = setInterval(() => {
-      // Cada 10s enviamos tiempo activo
+      // cada 10s enviamos tiempo activo
       fetch(`${backend}/analytics`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -42,7 +42,7 @@ const useAnalytics = () => {
           referer: document.referrer,
         }),
       });
-      activeTimeRef.current = 0; // se reinicia el contador
+      activeTimeRef.current = 0; // reiniciamos contador
     }, 10000);
 
     const handleUnload = () => {

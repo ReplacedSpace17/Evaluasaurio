@@ -4,11 +4,11 @@ import { DownOutlined, UpOutlined, MenuOutlined } from "@ant-design/icons";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Spline from "@splinetool/react-spline";
-import "./navbar.css";
-import logo from "../../assets/logo2.svg";
-import texto from "../../assets/Logo.svg";
-import { singularityWebsite, Github, Instagram, TikTok, Facebook, GithubRepo } from '../../config/urls';
-import { getVisitado } from "../../functions/Localstorage.js";
+import "../styles/navbar.css";
+import logo from "../../../assets/logo2.svg";
+import texto from "../../../assets/Logo.svg";
+import { singularityWebsite, Github, Instagram, TikTok, Facebook, GithubRepo } from '../../../constants/urls.js';
+import { getVisitado } from "../../../services/Localstorage.service.js";
 
 const { Header, Content } = Layout;
 const { SubMenu } = Menu;

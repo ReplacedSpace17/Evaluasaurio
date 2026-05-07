@@ -22,7 +22,7 @@ import {
   TeamOutlined,
   BookOutlined
 } from '@ant-design/icons';
-import backend from '../../config/backend';
+import backend from '../../config/backend.js';
 import Solicitudes_admin from '../../Components/Admin/Solicitudes/Solicitudes.jsx';
 import EstadisticasVisitas from '../Visitas.jsx';
 import UserAdmin from '../../Components/Admin/UserAdmin/UserAdmin.jsx';
